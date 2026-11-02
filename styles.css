@@ -379,3 +379,4 @@ body.touring{padding-bottom:300px}
 @media(min-width:760px){.core{grid-template-columns:1.2fr 1fr 1fr}}
 @media(min-width:900px){.tiles{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:640px) and (max-width:899px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.result.lk{padding:26px 30px}@media(max-width:480px){.result.lk{padding:22px 18px}}
