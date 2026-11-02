@@ -19,6 +19,8 @@
   NB.forEach((b) => { SG.EN_SUB[b.n] = b.en[0]; });
   [['ভয়েস কল', 'Voice call'], ['লিংক ডিটেক্টর', 'Link detector'], ['সাপ্তাহিক অ্যালার্ট', 'Weekly alert'], ['সিক্রেট ওয়ার্ড', 'Secret word'], ['ডেমো ট্যুর', 'Demo tour']].forEach((x) => { SG.EN_EXACT[x[0]] = x[1]; });
   SG.EN_PAT = SG.EN_PAT || [];
+  SG.EN_SUB['লিংক বিশ্লেষণ'] = 'Link analysis';
+  SG.EN_PAT.push(['সন্দেহজনক ডোমেইন-প্রান্ত \\((\\.[a-z]+)\\)', 'Suspicious domain ending ($1)']);
   SG.EN_PAT.push(['"([^"]+)" নামের নকল-সদৃশ ঠিকানা — অফিসিয়াল সাইট নয়', '"$1" look-alike address, not the official site']);
   NB.forEach((b) => { SG.BADGES.push({ id: b.id, i: b.i, n: b.n, d: b.d }); SG.EN_EXACT[b.n] = b.en[0]; SG.EN_EXACT[b.d] = b.en[1]; });
 

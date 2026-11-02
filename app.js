@@ -174,27 +174,28 @@
       <div class="card"><div class="lvl"><div class="ico">${ri.cur.i}</div>
         <div style="flex:1"><div class="row sp"><b style="font-family:var(--disp)">${ri.cur.n}</b><span class="sm mut">${bn(S.xp)} XP</span></div>
         <div class="bar" style="margin:8px 0 4px"><i style="width:${ri.pct}%"></i></div><span class="sm mut">${ri.nx ? 'পরের র‍্যাংক: ' + ri.nx.n : 'সর্বোচ্চ র‍্যাংক'} · স্ট্রিক ${bn(S.streak)} দিন</span>
-        <div class="serial">ক্রমিক নং SG-${bn(S.serial)}</div></div></div></div>
+        <div class="serial">ক্রমিক নং SG-${bn(S.serial)}</div><a class="sm" href="#/me" style="font-weight:600;display:inline-block;margin-top:4px">${L('প্রোফাইল ও ব্যাজ ›', 'Profile and badges ›')}</a></div></div></div>
       <a class="card daily" href="#/play/${d.id}" style="display:block"><div class="row sp"><span class="pill warn">আজকের চ্যালেঞ্জ</span>${dailyDone ? '<span class="pill ok">সম্পন্ন</span>' : '<span class="pill acc">+৫০ বোনাস XP</span>'}</div>
         <h3 style="margin:10px 0 3px">${d.icon} ${esc(d.title)}</h3><p class="sm mut">${esc(d.channel)} · ${'🔥'.repeat(d.level)}</p></a>
       <div class="tip"><span style="font-size:1.6rem">💡</span><div><b class="sm">আজকের টিপ</b><div>${esc(tip)}</div></div></div>
     </div>
 
-    <h2 class="sec">অনুশীলন করুন</h2>
-    <div class="tiles">
-      ${T('#/arena', '⚡', 'অ্যারেনা', '১০টি বাস্তব ধাঁচের সিমুলেশনে প্রতারকের সাথে লড়ুন।')}
-      ${T('#/live', '🤖', 'লাইভ AI', 'AI নিজে প্রতারক সাজবে। যা খুশি লিখে ঠেকান।')}
-      ${T('#/spot', '🎯', 'স্পট দ্য স্ক্যাম', 'আসল না নকল? ১০টি কার্ডে নিজেকে পরখ করুন।')}
-      ${T('#/library', '📚', 'স্ক্যাম লাইব্রেরি', 'প্রচলিত ফাঁদগুলো কীভাবে কাজ করে, কীভাবে বাঁচবেন।')}
-      ${T('#/voice', '🎙️', L('ভয়েস কল সিমুলেশন', 'Voice call simulator'), L('প্রতারক ফোনে কথা বলবে, আপনিও মুখে উত্তর দিন।', 'The scammer speaks on a call. Answer out loud.'), 'new')}
+    <h2 class="sec">${L('এখান থেকে শুরু করুন', 'Start here')}</h2>
+    <div class="core">
+      <a class="cc dark" href="#/arena"><span class="ci">⚡</span><h3>${L('অ্যারেনা', 'Arena')}</h3><p>${L('১০টি বাস্তব ধাঁচের পরিস্থিতিতে প্রতারকের চাপ সামলান। ভুল করলে কোচ বুঝিয়ে দেবে।', 'Handle a scammer\'s pressure in 10 realistic situations. The coach explains every mistake.')}</p><b>${L('অনুশীলন শুরু করুন', 'Start practising')} ›</b></a>
+      <a class="cc" href="#/live"><span class="ci">🤖</span><h3>${L('লাইভ AI', 'Live AI')}</h3><p>${L('AI নিজে প্রতারক সাজে। যা খুশি লিখুন, প্রতিটি উত্তরের নিরাপত্তা যাচাই হবে।', 'The AI plays the scammer. Type anything and each reply is graded for safety.')}</p><b>${L('AI-এর মুখোমুখি হন', 'Face the AI')} ›</b></a>
+      <a class="cc" href="#/scan"><span class="ci">🔎</span><h3>${L('স্ক্যানার', 'Scanner')}</h3><p>${L('সন্দেহজনক মেসেজ বা লিংক দিন। কী সন্দেহজনক, কী যাচাই হয়নি, এখন কী করবেন সব দেখুন।', 'Paste a suspicious message or link. See what looks wrong, what could not be checked, and what to do next.')}</p><b>${L('মেসেজ যাচাই করুন', 'Check a message')} ›</b></a>
     </div>
-    <h2 class="sec">যাচাই ও সুরক্ষা</h2>
+    <h2 class="sec">${L('আরও টুল', 'More tools')}</h2>
     <div class="tiles">
-      ${T('#/scan', '🔎', 'স্ক্যানার', 'মেসেজ বা লিংক দিন, লাল পতাকা ধরা পড়বে।')}
+      ${T('#/voice', '🎙️', L('ভয়েস কল সিমুলেশন', 'Voice call simulator'), L('প্রতারক ফোনে কথা বলবে, আপনিও মুখে উত্তর দিন।', 'The scammer speaks on a call. Answer out loud.'), 'new')}
+      ${T('#/lookalike', '🕸️', L('ভুয়া লিংক ডিটেক্টর', 'Look-alike link check'), L('bKash, ব্যাংক বা কুরিয়ারের নকল ঠিকানা অক্ষর ধরে ধরুন।', 'Catch fake bKash, bank or courier addresses letter by letter.'), 'new')}
+      ${T('#/alerts', '📣', L('সাপ্তাহিক স্ক্যাম অ্যালার্ট', 'Weekly scam alert'), L('এই সপ্তাহে কোন ফাঁদ চিনে রাখবেন।', 'The trap to learn this week.'))}
+      ${T('#/spot', '🎯', 'স্পট দ্য স্ক্যাম', 'আসল না নকল? ১০টি কার্ডে নিজেকে পরখ করুন।')}
       ${T('#/triage', '🩺', 'দ্রুত যাচাই', 'ছয়টি প্রশ্নে জানুন আপনি ফাঁদে পড়ছেন কি না।')}
       ${T('#/pause', '⏳', '১০ মিনিট বিরতি', 'টাকা পাঠানোর আগে থামুন, চেকলিস্টে মিলিয়ে নিন।')}
       ${T('#/audit', '🔐', 'সুরক্ষা অডিট', 'আপনার ফোন ও অ্যাকাউন্টের সুরক্ষা কতটা, স্কোর দেখুন।')}
-      ${T('#/lookalike', '🕸️', L('ভুয়া লিংক ডিটেক্টর', 'Look-alike link check'), L('bKash, ব্যাংক বা কুরিয়ারের নকল ঠিকানা অক্ষর ধরে ধরুন।', 'Catch fake bKash, bank or courier addresses letter by letter.'), 'new')}
+      ${T('#/library', '📚', 'স্ক্যাম লাইব্রেরি', 'প্রচলিত ফাঁদগুলো কীভাবে কাজ করে, কীভাবে বাঁচবেন।')}
     </div>
     <h2 class="sec">পরিবার ও বিপদে</h2>
     <div class="tiles">
@@ -202,7 +203,6 @@
       ${T('#/shield', '🏡', 'ফ্যামিলি শিল্ড', 'কোডওয়ার্ড বানান, বড় লেখা, শেয়ার কার্ড।')}
       ${T('#/secret', '🗝️', L('সিক্রেট ওয়ার্ড প্ল্যান', 'Secret word plan'), L('ভয়েস-ক্লোন ঠেকাতে পরিবারের প্রত্যেকের জন্য গোপন শব্দ।', 'A private word for each family member against voice clones.'))}
       ${T('#/cert', '📜', 'প্রশিক্ষণ সনদ', 'আপনার স্ক্যাম আইকিউসহ সনদ ডাউনলোড করুন।')}
-      ${T('#/me', '🏅', 'প্রোফাইল', 'র‍্যাংক, ব্যাজ ও অগ্রগতি।')}
     </div>
 
     <h2 class="sec">কীভাবে কাজ করে</h2>
@@ -275,7 +275,7 @@
       bubble('me', esc(stripQ(c.t)));
       step.tactics.forEach((t) => { const r = S.tac[t] || (S.tac[t] = { seen: 0, fell: 0 }); r.seen++; if (c.k !== 'safe') r.fell++; }); save();
       const lab = { safe: '✅ সঠিক চাল', risky: '⚠️ ঝুঁকিপূর্ণ চাল', fatal: '❌ ফাঁদে পড়লেন' }[c.k];
-      const tc = step.tactics.map((t) => `<span class="tc">${SG.TACTICS[t].i} ${SG.TACTICS[t].l}</span>`).join(' ');
+      const tc = step.tactics.map((t) => `<span class="tc">${SG.TACTICS[t].i} ${tx(SG.TACTICS[t].l)}</span>`).join(' ');
       bubble('coach ' + c.k, `<b>${lab}</b>${esc(c.fb)}<div class="chips" style="margin-top:8px">${tc}</div>`);
       if (c.k === 'risky') { run.guard -= 25; run.mistakes.push({ s: step.msg, c: c.t, fb: c.fb, k: c.k }); guardUI(); }
       if (c.k === 'fatal') { run.guard = 0; guardUI(); run.mistakes.push({ s: step.msg, c: c.t, fb: c.fb, k: c.k }); $('#phone').classList.add('shake'); }
@@ -314,7 +314,7 @@
       if (SG.SCENARIOS.every((s) => S.done[s.id] && S.done[s.id].wins > 0)) award('all');
 
       const idx = SG.SCENARIOS.indexOf(sc), next = SG.SCENARIOS[(idx + 1) % SG.SCENARIOS.length];
-      const seen = Object.keys(run.seen).map((k) => `<span class="tc">${SG.TACTICS[k].i} ${SG.TACTICS[k].l} ×${bn(run.seen[k])}</span>`).join(' ');
+      const seen = Object.keys(run.seen).map((k) => `<span class="tc">${SG.TACTICS[k].i} ${tx(SG.TACTICS[k].l)} ×${bn(run.seen[k])}</span>`).join(' ');
       const mist = run.mistakes.map((m) => `<div class="mist"><b>${m.k === 'fatal' ? '❌' : '⚠️'} আপনি বলেছিলেন: ${esc(stripQ(m.c))}</b><small>${esc(m.fb)}</small></div>`).join('');
       const head = outcome === 'lose' ? ['😵', 'প্রতারক জিতে গেল!', 'চিন্তা নেই — এটা অনুশীলন। এখানে ভুল করলে কিছু হারায় না।']
         : outcome === 'exit' ? ['📵', 'সঠিক সময়ে বেরিয়ে এলেন!', run.steps === 0 ? 'আসল জীবনে এটাই সেরা চাল — প্রথম সন্দেহেই বেরিয়ে আসা।' : 'ফাঁদ বুঝে সময়মতো বেরিয়ে আসাই আসল দক্ষতা।']
@@ -452,12 +452,20 @@
       const C = 2 * Math.PI * 70, off = C - (score / 100) * C;
       return `<div class="gauge"><div class="rs" aria-hidden="true">${rosette({ n: 30, rx: 48, ry: 14, sw: 0.4 })}</div><svg viewBox="0 0 160 160"><circle cx="80" cy="80" r="70" fill="none" stroke="rgba(13,43,44,.12)" stroke-width="14"/><circle cx="80" cy="80" r="70" fill="none" stroke="${col}" stroke-width="14" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${off}" style="transition:stroke-dashoffset .9s"/></svg><div class="v"><div><b style="color:${col}">${bn(score)}</b><span><br>ঝুঁকির স্কোর</span></div></div></div>`;
     }
+    function unverified(r, text) {
+      const u = [L('বার্তাটি সত্যিই ওই প্রতিষ্ঠান থেকে এসেছে কি না (প্রেরকের পরিচয় আমরা দেখতে পারি না)।', 'Whether the message really came from that organisation (we cannot see the sender).')];
+      if (r.links.length) u.push(L('লিংকের ভেতরের পেজ আমরা খুলি না। পেজটা দেখতে কেমন বা কী চায়, তা যাচাই হয়নি।', 'We never open the link, so what the page looks like or asks for is unchecked.'));
+      if (/01[3-9][\d\s-]{8,}/.test(text)) u.push(L('নম্বরটির আসল মালিক কে, তা জানা যায়নি।', 'Who actually owns the phone number is unknown.'));
+      if (/(টাকা|tk|taka|৳|bkash|বিকাশ|নগদ|nagad)/i.test(text)) u.push(L('টাকার অঙ্ক বা লেনদেনের দাবি সত্যি কি না আপনার নিজের অ্যাপে মিলিয়ে দেখুন।', 'Check any money claim against your own app or statement.'));
+      if (r.score < 15) u.push(L('কোনো লাল পতাকা না পাওয়া মানে নিরাপদ প্রমাণ নয়।', 'Finding no red flags does not prove the message is safe.'));
+      return u;
+    }
     function analyze() {
       const text = txt.value.trim();
       if (!text) { toast('আগে কিছু লিখুন বা পেস্ট করুন', true); return; }
       const r = SC.analyze(text);
       S.scans++; save(); if (S.scans >= 5) award('scan5');
-      const tc = Object.keys(r.tactics).map((k) => `<span class="tc">${SG.TACTICS[k].i} ${SG.TACTICS[k].l}</span>`).join(' ');
+      const tc = Object.keys(r.tactics).map((k) => `<span class="tc">${SG.TACTICS[k].i} ${tx(SG.TACTICS[k].l)}</span>`).join(' ');
       out.innerHTML = `<div class="card glow c stack"><div>${gauge(r.score, r.key)}</div><h2>${r.emoji} ${esc(r.level)}</h2>
         ${r.notes.length ? `<div class="notice" style="text-align:left">${r.notes.map(esc).join('<br>')}</div>` : ''}
         ${tc ? `<div class="chips" style="justify-content:center">${tc}</div>` : ''}
@@ -465,6 +473,7 @@
       <h2 class="sec">🖍️ চিহ্নিত অংশ</h2><div class="hl">${SC.highlight(r.text, r.ranges, esc)}</div>
       ${r.rules.length ? `<h2 class="sec">🚩 লাল পতাকা <small>(${bn(r.rules.length)}টি)</small></h2><div class="card">${r.rules.map((x) => `<div class="flagrow"><div class="w">+${bn(x.w)}</div><div><b>${SG.TACTICS[x.tactic].i} ${esc(x.label)}</b><div class="sm mut">${esc(x.why)}</div></div></div>`).join('')}${r.bonus.map((b) => `<div class="flagrow"><div class="w">⚠️</div><div class="sm">${esc(b)}</div></div>`).join('')}</div>` : ''}
       ${r.links.length ? `<h2 class="sec">🔗 লিংক বিশ্লেষণ</h2><div class="card">${r.links.map((l) => `<div class="lk ${l.official ? 'official' : l.risk >= 30 ? 'bad' : ''}"><b>${esc(l.host)}</b> ${l.official ? '<span class="pill ok">অফিসিয়াল তালিকায় আছে</span>' : l.risk >= 30 ? '<span class="pill bad">উচ্চ ঝুঁকি</span>' : '<span class="pill warn">যাচাই করুন</span>'}${l.flags.map((f) => `<div class="sm mut">• ${esc(f.t)}</div>`).join('')}${l.official ? '<div class="sm mut">অফিসিয়াল তালিকায় থাকা মানেই ১০০% নিরাপদ নয় — পুরো ঠিকানা ভালো করে দেখুন।</div>' : ''}</div>`).join('')}</div>` : ''}
+      <h2 class="sec">${L('❓ যা যাচাই করা যায়নি', '❓ What could not be checked')}</h2><div class="card"><ul class="ul">${unverified(r, text).map((x) => `<li>${esc(x)}</li>`).join('')}</ul><p class="sm mut" style="margin-top:8px">${L('স্ক্যানার শুধু লেখাটা দেখে। এই বিষয়গুলো আপনাকে নিজে অফিসিয়াল মাধ্যমে যাচাই করতে হবে।', 'The scanner only reads the text. You have to verify these yourself through official channels.')}</p></div>
       <h2 class="sec">🛡️ এখন কী করবেন</h2><div class="card"><ul class="ul">${r.advice.map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>
       <div class="card ai-box" style="margin-top:16px"><div class="row sp"><div><b>🧠 AI গভীর বিশ্লেষণ</b><div class="sm mut">প্রসঙ্গ বুঝে দ্বিতীয় মতামত — নিয়ম-ভিত্তিক ইঞ্জিনের পরিপূরক।</div></div><button class="btn sm" id="ai">বিশ্লেষণ করুন</button></div><div id="aiout"></div></div>`;
       $('#spk').onclick = () => speak(r.level + '। ঝুঁকির স্কোর ' + bn(r.score) + '। ' + r.advice.slice(0, 3).join(' '));
@@ -648,7 +657,7 @@
     let tip = '';
     if (weak && weak.rate > 0) {
       const rec = SG.SCENARIOS.slice().sort((a, b) => b.steps.filter((s) => s.tactics.includes(weak.k)).length - a.steps.filter((s) => s.tactics.includes(weak.k)).length)[0];
-      tip = `<p style="margin-top:8px"><b>সবচেয়ে দুর্বল জায়গা:</b> ${SG.TACTICS[weak.k].i} ${SG.TACTICS[weak.k].l} (${bn(Math.round(weak.rate * 100))}% ক্ষেত্রে ধরা খেয়েছেন)</p><a class="btn sm" style="margin-top:8px" href="#/play/${rec.id}">অনুশীলন করুন: ${rec.icon} ${esc(rec.title)}</a>`;
+      tip = `<p style="margin-top:8px"><b>সবচেয়ে দুর্বল জায়গা:</b> ${SG.TACTICS[weak.k].i} ${tx(SG.TACTICS[weak.k].l)} (${bn(Math.round(weak.rate * 100))}% ক্ষেত্রে ধরা খেয়েছেন)</p><a class="btn sm" style="margin-top:8px" href="#/play/${rec.id}">অনুশীলন করুন: ${rec.icon} ${esc(rec.title)}</a>`;
     } else tip = '<p style="margin-top:8px">এ পর্যন্ত কোনো কৌশলে ধরা খাননি। চমৎকার!</p>';
     return `<div class="card"><b>দুর্বলতার রাডার</b><p class="sm mut">যত বাইরে, তত বেশি ধরা খেয়েছেন।</p><svg viewBox="0 0 300 300" style="width:100%;max-width:340px;display:block;margin:6px auto" role="img" aria-label="দুর্বলতার রাডার চার্ট">${rings}${axes}<polygon points="${poly}" fill="rgba(179,23,62,.22)" stroke="#b3173e" stroke-width="2"/>${lab}</svg>${tip}</div>`;
   }
