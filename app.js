@@ -164,6 +164,7 @@
       <div class="hero-in">
         <h1>প্রতারকের মুখোমুখি হওয়ার আগে, এখানে অনুশীলন করুন।</h1>
         <p>AI প্রতারক সেজে আপনাকে ফাঁদে ফেলার চেষ্টা করবে, আর আপনি শিখবেন কীভাবে ঠেকাতে হয়। সন্দেহজনক মেসেজ যাচাই করুন, টাকা পাঠানোর আগে থামুন, বিপদে SOS গাইড খুলুন।</p>
+        <p class="tagline">${L('তারা ভয়ের ওপর ভর করে। আপনি অনুশীলনের ওপর।', 'They rely on panic. You rely on practice.')}</p>
         <div class="row"><a class="btn pri" href="#/arena">অ্যারেনায় নামুন</a><a class="btn" href="#/scan">মেসেজ স্ক্যান করুন</a><a class="btn" href="#/triage">এখন কি প্রতারিত হচ্ছি?</a><a class="btn" href="#/tour">${L('▶ ৯০ সেকেন্ডের ডেমো', '▶ 90-second demo')}</a></div>
       </div>
       <div class="hero-demo" aria-hidden="true">
@@ -292,7 +293,7 @@
       step.tactics.forEach((t) => { const r = S.tac[t] || (S.tac[t] = { seen: 0, fell: 0 }); r.seen++; if (c.k !== 'safe') r.fell++; }); save();
       const lab = { safe: '✅ সঠিক চাল', risky: '⚠️ ঝুঁকিপূর্ণ চাল', fatal: '❌ ফাঁদে পড়লেন' }[c.k];
       const tc = step.tactics.map((t) => `<span class="tc">${SG.TACTICS[t].i} ${tx(SG.TACTICS[t].l)}</span>`).join(' ');
-      bubble('coach ' + c.k, `<b>${lab}</b>${esc(c.fb)}<div class="chips" style="margin-top:8px">${tc}</div>`);
+      bubble('coach ' + c.k, `<span class="vstamp ${c.k}">${{ safe: L('সঠিক', 'Safe'), risky: L('ঝুঁকি', 'Risky'), fatal: L('ফাঁদ', 'Trap') }[c.k]}</span><b>${lab}</b>${esc(c.fb)}<div class="chips" style="margin-top:8px">${tc}</div>`);
       if (c.k === 'risky') { run.guard -= 25; run.mistakes.push({ s: step.msg, c: c.t, fb: c.fb, k: c.k }); guardUI(); }
       if (c.k === 'fatal') { run.guard = 0; guardUI(); run.mistakes.push({ s: step.msg, c: c.t, fb: c.fb, k: c.k }); $('#phone').classList.add('shake'); }
       if (c.k === 'fatal' || run.guard <= 0) { ch.innerHTML = `<button class="btn pri" id="fin">ফলাফল দেখুন ▶</button>`; $('#fin').onclick = () => finish('lose'); return; }

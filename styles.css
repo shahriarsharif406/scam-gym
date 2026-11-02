@@ -1,4 +1,6 @@
 /* self-hosted fonts (OFL) */
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(assets/fonts/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/fraunces-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Fraunces';font-style:normal;font-weight:800;font-display:swap;src:url(assets/fonts/fraunces-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Noto Serif Bengali';font-style:normal;font-weight:600;font-display:swap;src:url(assets/fonts/noto-serif-bengali-bengali-600-normal.woff2) format('woff2');unicode-range:U+0951-0952,U+0964-0965,U+0980-09FE,U+1CF7,U+200C-200D,U+20B9,U+25CC}
@@ -305,7 +307,7 @@ details.acc .bd{padding:0 18px 18px}
 .card .ch{color:var(--ink);background:var(--paper);border-color:var(--line2);box-shadow:2px 2px 0 var(--line2)}
 .card .ch:hover{border-color:var(--note);background:#eaf4ee}
 .card .ch.good{background:#d6ece0;border-color:var(--ok);opacity:1}.card .ch.wrong{background:#f6dde3;border-color:var(--stamp);opacity:1}.card .ch.dim{opacity:.45}
-.card .ch:disabled{pointer-events:none}.ch.mono,code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.01em}
+.card .ch:disabled{pointer-events:none}.ch.mono,code{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.01em}
 .card .coach{color:var(--ink)}.card .coach.safe{background:#e0f1e8;border-color:var(--ok)}.card .coach.risky{background:#f8ecd0;border-color:var(--warn)}.card .coach.fatal{background:#f8dde3;border-color:var(--stamp)}
 .stamp.wr{color:#8a5a0a}
 .tile.new{position:relative}.tile.new::after{content:'NEW';position:absolute;top:10px;right:10px;font:700 .64rem/1 var(--num);letter-spacing:.08em;padding:4px 6px;border-radius:4px;background:var(--stamp);color:#fff}
@@ -324,7 +326,7 @@ details[open].card>summary::after{content:'▴'}details.card>.card{border:0;box-
 .g2{grid-template-columns:1fr}@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}}
 
 /* লুক-অ্যালাইক ডিটেক্টর */
-.anat{display:flex;align-items:flex-end;flex-wrap:wrap;margin:12px 0 4px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1.05rem;font-weight:600}
+.anat{display:flex;align-items:flex-end;flex-wrap:wrap;margin:12px 0 4px;font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1.05rem;font-weight:600}
 .anat .seg{display:inline-flex;flex-direction:column;align-items:flex-start;padding:6px 6px 0;border-bottom:4px solid var(--line2)}
 .anat .seg i{font-style:normal;word-break:break-all}.anat .seg small{font:500 .64rem/1.2 var(--font);color:var(--mut);margin-top:4px;padding-bottom:3px}
 .anat .seg.own{border-bottom-color:var(--stamp);background:#fbeef1}.anat .seg.own small{color:var(--stamp);font-weight:700}
@@ -425,3 +427,15 @@ body.touring{padding-bottom:300px}
 .cc.dark .cw{color:var(--mint);opacity:.2}.cc .cw svg{width:100%;height:100%}.cc>*:not(.cw){position:relative}
 .cc .ci{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.7rem;background:#d8ece1;border:1.5px solid var(--ink)}.cc.dark .ci{background:#17695a;border-color:var(--mint)}
 .cc h3{font-size:1.4rem}
+
+/* ===== ভয়েস তরঙ্গ, রবার-স্ট্যাম্প, ট্যাগলাইন ===== */
+.wave{display:flex;align-items:center;justify-content:center;gap:3px;height:38px;margin:6px 0 0}
+.wave i{width:4px;height:6px;border-radius:3px;background:var(--mint);opacity:.55;transition:height .2s}
+.callui[data-s="speak"] .wave i{background:#ff8aa5;opacity:1;animation:wv 1s ease-in-out infinite}
+.callui[data-s="listen"] .wave i{background:#ffd166;opacity:1;animation:wv .8s ease-in-out infinite}
+.wave i:nth-child(3n){animation-delay:-.2s!important}.wave i:nth-child(3n+1){animation-delay:-.55s!important}.wave i:nth-child(4n){animation-duration:.6s!important}.wave i:nth-child(5n){animation-duration:1.3s!important}
+@keyframes wv{0%,100%{height:6px}50%{height:34px}}
+.coach{position:relative}.vstamp{position:absolute;right:10px;top:-12px;transform:rotate(-6deg);padding:2px 12px;border:2.5px double;border-radius:5px;font:800 .92rem var(--disp);background:rgba(13,43,44,.92);animation:hd-stamp .45s both cubic-bezier(.2,1.6,.4,1)}
+.vstamp.safe{color:#78e1af}.vstamp.risky{color:#f0b946}.vstamp.fatal{color:#ff6e8c}
+.card .vstamp{background:var(--paper2)}.card .vstamp.safe{color:var(--note2)}.card .vstamp.risky{color:#8a5a0a}.card .vstamp.fatal{color:var(--stamp)}
+.tagline{margin-top:16px;padding-left:14px;border-left:3px solid #ffd166;font:700 1.12rem/1.5 var(--disp);color:#fff;max-width:520px}

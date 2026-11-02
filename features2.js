@@ -35,7 +35,7 @@
         <div class="callui" id="cu"><div class="cu-bg" aria-hidden="true">${rosette({ n: 36, rx: 48, ry: 15, sw: 0.4, rings: 2 })}</div>
           <div class="cu-in"><div class="cu-state" id="vst">${L('ইনকামিং কল', 'Incoming call')}</div>
           <div class="cu-av" id="vav"><span class="ring r1"></span><span class="ring r2"></span><span class="av">${p.icon}</span></div>
-          <h2 class="cu-name">${esc(p.n)}</h2><div class="cu-tm" id="tm">${L('অচেনা নম্বর', 'Unknown number')}</div>
+          <div class="wave" aria-hidden="true">${'<i></i>'.repeat(26)}</div><h2 class="cu-name">${esc(p.n)}</h2><div class="cu-tm" id="tm">${L('অচেনা নম্বর', 'Unknown number')}</div>
           <div class="cu-cap" id="cap" aria-live="polite"></div>
           <div class="cu-you" id="you"></div>
           <div class="guard dark"><div class="row sp sm"><span>🛡️ ${L('আপনার সুরক্ষা', 'Your safety')}</span><b id="gv">${bn(100)}%</b></div><div class="seg" id="seg"></div></div>
