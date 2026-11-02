@@ -93,3 +93,12 @@ node --check app.js features.js features2.js data.js data2.js en.js scanner.js a
 Scanner behaviour was checked against scam and genuine samples (genuine OTP notices score near zero), and every route and simulation was walked in jsdom.
 
 © FutureTech.ai · MIT License
+
+## Offline pack
+
+| Feature | What it does |
+|---|---|
+| Offline status and install | Footer pill shows whether the app is cached; a banner appears when the connection drops; one-tap install to the home screen |
+| Progress backup and restore | Exports XP, badges, scores and family names to a JSON file and restores it on another phone. Validated on import. The secret word is never written to the file |
+| Emergency card | One page of steps and helplines with an optional trusted contact (kept on the device). Save as PNG or print |
+| 6 more simulations | Courier customs fee, power disconnection threat, used-phone advance payment, remittance bonus, QR "to receive money", SIM/NID update. 16 in total, fully bilingual and playable offline |

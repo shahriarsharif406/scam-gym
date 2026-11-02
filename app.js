@@ -132,7 +132,7 @@
 
   /* ---------- router ---------- */
   const VIEWS = {};
-  const GROUP = { play: 'arena', spot: 'more', library: 'more', shield: 'more', triage: 'more', audit: 'more', pause: 'more', cert: 'more', me: 'more', voice: 'arena', lookalike: 'scan', secret: 'more', alerts: 'more' };
+  const GROUP = { play: 'arena', spot: 'more', library: 'more', shield: 'more', triage: 'more', audit: 'more', pause: 'more', cert: 'more', me: 'more', voice: 'arena', lookalike: 'scan', secret: 'more', alerts: 'more', offline: 'more', card: 'more' };
   function setNav(n) {
     const g = GROUP[n] || n;
     $$('#dnav [data-r], #bnav [data-r]').forEach((a) => a.classList.toggle('on', a.dataset.r === g));
@@ -181,7 +181,7 @@
     </section>
 
     <div class="facts" role="list">
-      <div role="listitem"><b>${bn(10)}</b><span>${L('বাস্তব ধাঁচের সিমুলেশন', 'realistic simulations')}</span></div>
+      <div role="listitem"><b>${bn(SG.SCENARIOS.length)}</b><span>${L('বাস্তব ধাঁচের সিমুলেশন', 'realistic simulations')}</span></div>
       <div role="listitem"><b>${bn(2)}</b><span>${L('ভাষা: বাংলা ও ইংরেজি', 'languages: Bangla and English')}</span></div>
       <div role="listitem"><b>${L('অফলাইন', 'Offline')}</b><span>${L('ইন্টারনেট ছাড়াও চলে', 'works without internet')}</span></div>
       <div role="listitem"><b>${L('আপনার ফোনে', 'On-device')}</b><span>${L('অগ্রগতি শুধু আপনার ডিভাইসে', 'progress stays on your device')}</span></div>

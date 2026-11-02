@@ -17,7 +17,7 @@
   SG.EN_EXACT = SG.EN_EXACT || {};
   SG.EN_SUB = SG.EN_SUB || {};
   NB.forEach((b) => { SG.EN_SUB[b.n] = b.en[0]; });
-  [['ভয়েস কল', 'Voice call'], ['লিংক ডিটেক্টর', 'Link detector'], ['সাপ্তাহিক অ্যালার্ট', 'Weekly alert'], ['সিক্রেট ওয়ার্ড', 'Secret word'], ['ডেমো ট্যুর', 'Demo tour']].forEach((x) => { SG.EN_EXACT[x[0]] = x[1]; });
+  [['ভয়েস কল', 'Voice call'], ['লিংক ডিটেক্টর', 'Link detector'], ['সাপ্তাহিক অ্যালার্ট', 'Weekly alert'], ['সিক্রেট ওয়ার্ড', 'Secret word'], ['ডেমো ট্যুর', 'Demo tour'], ['জরুরি কার্ড', 'Emergency card'], ['অফলাইন ও ব্যাকআপ', 'Offline and backup']].forEach((x) => { SG.EN_EXACT[x[0]] = x[1]; });
   SG.EN_PAT = SG.EN_PAT || [];
   SG.EN_SUB['লিংক বিশ্লেষণ'] = 'Link analysis';
   SG.EN_PAT.push(['সন্দেহজনক ডোমেইন-প্রান্ত \\((\\.[a-z]+)\\)', 'Suspicious domain ending ($1)']);

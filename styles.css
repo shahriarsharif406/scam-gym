@@ -439,3 +439,23 @@ body.touring{padding-bottom:300px}
 .vstamp.safe{color:#78e1af}.vstamp.risky{color:#f0b946}.vstamp.fatal{color:#ff6e8c}
 .card .vstamp{background:var(--paper2)}.card .vstamp.safe{color:var(--note2)}.card .vstamp.risky{color:#8a5a0a}.card .vstamp.fatal{color:var(--stamp)}
 .tagline{margin-top:16px;padding-left:14px;border-left:3px solid #ffd166;font:700 1.12rem/1.5 var(--disp);color:#fff;max-width:520px}
+
+/* ===== অফলাইন প্যাক ===== */
+.offpill{display:inline-block;margin-bottom:8px;text-decoration:none}
+.op{display:inline-block;padding:4px 12px;border:2px double var(--ink);border-radius:20px;font:600 .82rem var(--body,inherit);background:var(--paper2);color:var(--ink)}
+.op.ok{color:var(--note2);border-color:var(--note2)}.op.off{background:#fff2cc;color:#7a4f00;border-color:#b07a10}
+.offbar{position:sticky;top:0;z-index:60;padding:8px 14px;text-align:center;font-size:.86rem;font-weight:600;background:#f5d98a;color:#4a3000;border-bottom:2px solid #b07a10}
+.card.offok{border-color:var(--note2)}
+.offl{margin:0;padding-left:20px;display:grid;gap:4px}.offl li{list-style:none;margin-left:-20px}
+.ecard{background:#f4f1e6;border:3px double var(--ink);border-radius:10px;padding:16px;box-shadow:5px 5px 0 var(--ink)}
+.ec-h{display:flex;gap:12px;align-items:center;background:#0d2b2c;color:#fff;margin:-16px -16px 14px;padding:14px 16px;border-radius:7px 7px 0 0}
+.ec-h b{display:block;font:800 1.35rem var(--disp)}.ec-h .sm{color:#ffd166}
+.ec-ro{width:44px;height:44px;display:grid;place-items:center;opacity:.8}.ec-ro svg{width:44px;height:30px}
+.ec-s{margin:0 0 12px;padding-left:22px;display:grid;gap:6px;font-weight:600}
+.ec-hl{display:grid;gap:6px;border-top:2px solid var(--ink);padding-top:10px}
+.ec-hl a{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:baseline;text-decoration:none;color:inherit}
+.ec-hl b{color:#b0123a;font-size:1.1rem}.ec-hl span{font-size:.9rem}
+.ec-me{margin-top:12px;padding-top:10px;border-top:2px solid var(--ink);display:grid;gap:2px}
+@media print{body.printing-card>*:not(main){display:none!important}body.printing-card main>*:not(.play){display:none!important}body.printing-card .play>*:not(#ecwrap){display:none!important}body.printing-card .ecard{box-shadow:none}}
+#ec-n,#ec-t{display:block;width:100%;box-sizing:border-box;padding:10px 12px;margin-top:4px;border:2px solid var(--ink);border-radius:8px;background:#fff;font:inherit;color:var(--ink)}
+#ec-n:focus-visible,#ec-t:focus-visible{outline:3px solid #ffd166;outline-offset:1px}
