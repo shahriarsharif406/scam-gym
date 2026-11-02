@@ -166,9 +166,25 @@
         <p>AI প্রতারক সেজে আপনাকে ফাঁদে ফেলার চেষ্টা করবে, আর আপনি শিখবেন কীভাবে ঠেকাতে হয়। সন্দেহজনক মেসেজ যাচাই করুন, টাকা পাঠানোর আগে থামুন, বিপদে SOS গাইড খুলুন।</p>
         <div class="row"><a class="btn pri" href="#/arena">অ্যারেনায় নামুন</a><a class="btn" href="#/scan">মেসেজ স্ক্যান করুন</a><a class="btn" href="#/triage">এখন কি প্রতারিত হচ্ছি?</a><a class="btn" href="#/tour">${L('▶ ৯০ সেকেন্ডের ডেমো', '▶ 90-second demo')}</a></div>
       </div>
+      <div class="hero-demo" aria-hidden="true">
+        <div class="hd-phone">
+          <div class="hd-top"><span class="hd-av">📞</span><div><b>${L('অচেনা নম্বর', 'Unknown number')}</b><small>${L('কল চলছে', 'Call in progress')}</small></div><i class="hd-live"></i></div>
+          <div class="hd-guard"><span>🛡️ ${L('আপনার সুরক্ষা', 'Your safety')}</span><div class="hd-seg"><i></i><i></i><i></i><i class="hd-drop"></i></div></div>
+          <div class="hd-msg them">${L('বিকাশ হেড অফিস থেকে বলছি। ১০ মিনিটে অ্যাকাউন্ট বন্ধ হবে। এখনই OTP বলুন!', 'This is bKash head office. Your account closes in 10 minutes. Read me the OTP now!')}</div>
+          <div class="hd-opt bad"><span>${L('ঠিক আছে, OTP বলছি', 'Okay, here is the OTP')}</span></div>
+          <div class="hd-opt good"><span>${L('কল কেটে নিজে যাচাই করি', 'Hang up and verify myself')}</span></div>
+          <div class="hd-stamp">${L('ফাঁদ ধরা পড়েছে', 'Trap spotted')}</div>
+        </div>
+      </div>
       <div class="micro" aria-hidden="true">${'স্ক্যাম জিম প্রশিক্ষণ নোট নমুনা '.repeat(60)}</div>
     </section>
 
+    <div class="facts" role="list">
+      <div role="listitem"><b>${bn(10)}</b><span>${L('বাস্তব ধাঁচের সিমুলেশন', 'realistic simulations')}</span></div>
+      <div role="listitem"><b>${bn(2)}</b><span>${L('ভাষা: বাংলা ও ইংরেজি', 'languages: Bangla and English')}</span></div>
+      <div role="listitem"><b>${L('অফলাইন', 'Offline')}</b><span>${L('ইন্টারনেট ছাড়াও চলে', 'works without internet')}</span></div>
+      <div role="listitem"><b>${L('আপনার ফোনে', 'On-device')}</b><span>${L('অগ্রগতি শুধু আপনার ডিভাইসে', 'progress stays on your device')}</span></div>
+    </div>
     ${SG.alertStrip ? SG.alertStrip() : ''}
     <div class="grid g3" style="margin-top:20px">
       <div class="card"><div class="lvl"><div class="ico">${ri.cur.i}</div>
@@ -182,9 +198,9 @@
 
     <h2 class="sec">${L('এখান থেকে শুরু করুন', 'Start here')}</h2>
     <div class="core">
-      <a class="cc dark" href="#/arena"><span class="ci">⚡</span><h3>${L('অ্যারেনা', 'Arena')}</h3><p>${L('১০টি বাস্তব ধাঁচের পরিস্থিতিতে প্রতারকের চাপ সামলান। ভুল করলে কোচ বুঝিয়ে দেবে।', 'Handle a scammer\'s pressure in 10 realistic situations. The coach explains every mistake.')}</p><b>${L('অনুশীলন শুরু করুন', 'Start practising')} ›</b></a>
-      <a class="cc" href="#/live"><span class="ci">🤖</span><h3>${L('লাইভ AI', 'Live AI')}</h3><p>${L('AI নিজে প্রতারক সাজে। যা খুশি লিখুন, প্রতিটি উত্তরের নিরাপত্তা যাচাই হবে।', 'The AI plays the scammer. Type anything and each reply is graded for safety.')}</p><b>${L('AI-এর মুখোমুখি হন', 'Face the AI')} ›</b></a>
-      <a class="cc" href="#/scan"><span class="ci">🔎</span><h3>${L('স্ক্যানার', 'Scanner')}</h3><p>${L('সন্দেহজনক মেসেজ বা লিংক দিন। কী সন্দেহজনক, কী যাচাই হয়নি, এখন কী করবেন সব দেখুন।', 'Paste a suspicious message or link. See what looks wrong, what could not be checked, and what to do next.')}</p><b>${L('মেসেজ যাচাই করুন', 'Check a message')} ›</b></a>
+      <a class="cc dark" href="#/arena"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ci">⚡</span><h3>${L('অ্যারেনা', 'Arena')}</h3><p>${L('১০টি বাস্তব ধাঁচের পরিস্থিতিতে প্রতারকের চাপ সামলান। ভুল করলে কোচ বুঝিয়ে দেবে।', 'Handle a scammer\'s pressure in 10 realistic situations. The coach explains every mistake.')}</p><b>${L('অনুশীলন শুরু করুন', 'Start practising')} ›</b></a>
+      <a class="cc" href="#/live"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ci">🤖</span><h3>${L('লাইভ AI', 'Live AI')}</h3><p>${L('AI নিজে প্রতারক সাজে। যা খুশি লিখুন, প্রতিটি উত্তরের নিরাপত্তা যাচাই হবে।', 'The AI plays the scammer. Type anything and each reply is graded for safety.')}</p><b>${L('AI-এর মুখোমুখি হন', 'Face the AI')} ›</b></a>
+      <a class="cc" href="#/scan"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ci">🔎</span><h3>${L('স্ক্যানার', 'Scanner')}</h3><p>${L('সন্দেহজনক মেসেজ বা লিংক দিন। কী সন্দেহজনক, কী যাচাই হয়নি, এখন কী করবেন সব দেখুন।', 'Paste a suspicious message or link. See what looks wrong, what could not be checked, and what to do next.')}</p><b>${L('মেসেজ যাচাই করুন', 'Check a message')} ›</b></a>
     </div>
     <h2 class="sec">${L('আরও টুল', 'More tools')}</h2>
     <div class="tiles">

@@ -32,7 +32,7 @@ Online fraud in Bangladesh runs on a few repeating moves: a caller who "works fo
 Also: XP, ranks, badges, daily challenge, streaks, text-to-speech, installable PWA that works offline.
 
 <p>
-<img src="docs/simulation.png" width="240" alt="Simulation">
+<img src="docs/simulation.png" width="420" alt="Simulation">
 <img src="docs/scanner.png" width="480" alt="Scanner">
 </p>
 
@@ -54,6 +54,7 @@ The interface is a security-printing look: banknote-style paper, ink, guilloche 
 - `en.js`: English overlay applied at render time, so Bangla stays the source of truth.
 - `api/chat.js`, `api/analyze.js`: Vercel serverless functions calling Gemini. Input caps, per-IP rate limiting, JSON-only output, prompts hardened against injection. The scammer persona never produces real numbers or URLs.
 - `sw.js`, `manifest.webmanifest`: offline PWA.
+- Fonts (Fraunces, Noto Serif Bengali, Hind Siliguri; SIL OFL) are self-hosted in `assets/fonts`, so the look is identical offline.
 
 Everything except the Gemini features works with no server and no key. Voice input needs a browser with the Web Speech API (Chrome or Edge); other browsers fall back to typing.
 
