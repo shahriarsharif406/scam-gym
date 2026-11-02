@@ -10,6 +10,7 @@
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   let LANG = 'bn';
   const bn = (n) => (LANG === 'en' ? String(n) : String(n).replace(/\d/g, (d) => '০১২৩৪৫৬৭৮৯'[d]));
+  const L = (b, e) => (LANG === 'en' ? e : b);
   const $ = (s, el) => (el || document).querySelector(s);
   const $$ = (s, el) => [...(el || document).querySelectorAll(s)];
   const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -70,13 +71,14 @@
 
   /* ---------- store ---------- */
   const KEY = 'scamgym.v1';
-  const defaults = () => ({ xp: 0, streak: 0, lastDay: '', done: {}, badges: {}, scans: 0, spotBest: 0, codeword: '', big: false, exits: 0, dailyClaimed: '', wins: 0, plays: 0, audit: {}, tac: {}, lang: 'bn', name: '', serial: String(Math.floor(100000 + Math.random() * 899999)) });
+  const defaults = () => ({ xp: 0, streak: 0, lastDay: '', done: {}, badges: {}, scans: 0, spotBest: 0, codeword: '', big: false, exits: 0, dailyClaimed: '', wins: 0, plays: 0, audit: {}, tac: {}, fam: [], lookBest: 0, voiceWins: 0, tourDone: false, lang: 'bn', name: '', serial: String(Math.floor(100000 + Math.random() * 899999)) });
   let S = (() => { try { return Object.assign(defaults(), JSON.parse(localStorage.getItem(KEY) || '{}')); } catch (e) { return defaults(); } })();
   try { const q = (location.search + location.hash).match(/[?&]lang=(en|bn)/); if (q) S.lang = q[1]; } catch (e) { /* ignore */ }
   LANG = S.lang === 'en' ? 'en' : 'bn';
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* ignore */ } };
   if (!S.audit || typeof S.audit !== 'object') S.audit = {};
   if (!S.tac || typeof S.tac !== 'object') S.tac = {};
+  if (!Array.isArray(S.fam)) S.fam = [];
   save();
   const dayKey = (d) => d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
   function touchDay() {
@@ -130,7 +132,7 @@
 
   /* ---------- router ---------- */
   const VIEWS = {};
-  const GROUP = { play: 'arena', spot: 'more', library: 'more', shield: 'more', triage: 'more', audit: 'more', pause: 'more', cert: 'more', me: 'more' };
+  const GROUP = { play: 'arena', spot: 'more', library: 'more', shield: 'more', triage: 'more', audit: 'more', pause: 'more', cert: 'more', me: 'more', voice: 'arena', lookalike: 'scan', secret: 'more', alerts: 'more' };
   function setNav(n) {
     const g = GROUP[n] || n;
     $$('#dnav [data-r], #bnav [data-r]').forEach((a) => a.classList.toggle('on', a.dataset.r === g));
@@ -162,11 +164,12 @@
       <div class="hero-in">
         <h1>প্রতারকের মুখোমুখি হওয়ার আগে, এখানে অনুশীলন করুন।</h1>
         <p>AI প্রতারক সেজে আপনাকে ফাঁদে ফেলার চেষ্টা করবে, আর আপনি শিখবেন কীভাবে ঠেকাতে হয়। সন্দেহজনক মেসেজ যাচাই করুন, টাকা পাঠানোর আগে থামুন, বিপদে SOS গাইড খুলুন।</p>
-        <div class="row"><a class="btn pri" href="#/arena">অ্যারেনায় নামুন</a><a class="btn" href="#/scan">মেসেজ স্ক্যান করুন</a><a class="btn" href="#/triage">এখন কি প্রতারিত হচ্ছি?</a></div>
+        <div class="row"><a class="btn pri" href="#/arena">অ্যারেনায় নামুন</a><a class="btn" href="#/scan">মেসেজ স্ক্যান করুন</a><a class="btn" href="#/triage">এখন কি প্রতারিত হচ্ছি?</a><a class="btn" href="#/tour">${L('▶ ৯০ সেকেন্ডের ডেমো', '▶ 90-second demo')}</a></div>
       </div>
       <div class="micro" aria-hidden="true">${'স্ক্যাম জিম প্রশিক্ষণ নোট নমুনা '.repeat(60)}</div>
     </section>
 
+    ${SG.alertStrip ? SG.alertStrip() : ''}
     <div class="grid g3" style="margin-top:20px">
       <div class="card"><div class="lvl"><div class="ico">${ri.cur.i}</div>
         <div style="flex:1"><div class="row sp"><b style="font-family:var(--disp)">${ri.cur.n}</b><span class="sm mut">${bn(S.xp)} XP</span></div>
@@ -183,6 +186,7 @@
       ${T('#/live', '🤖', 'লাইভ AI', 'AI নিজে প্রতারক সাজবে। যা খুশি লিখে ঠেকান।')}
       ${T('#/spot', '🎯', 'স্পট দ্য স্ক্যাম', 'আসল না নকল? ১০টি কার্ডে নিজেকে পরখ করুন।')}
       ${T('#/library', '📚', 'স্ক্যাম লাইব্রেরি', 'প্রচলিত ফাঁদগুলো কীভাবে কাজ করে, কীভাবে বাঁচবেন।')}
+      ${T('#/voice', '🎙️', L('ভয়েস কল সিমুলেশন', 'Voice call simulator'), L('প্রতারক ফোনে কথা বলবে, আপনিও মুখে উত্তর দিন।', 'The scammer speaks on a call. Answer out loud.'), 'new')}
     </div>
     <h2 class="sec">যাচাই ও সুরক্ষা</h2>
     <div class="tiles">
@@ -190,11 +194,13 @@
       ${T('#/triage', '🩺', 'দ্রুত যাচাই', 'ছয়টি প্রশ্নে জানুন আপনি ফাঁদে পড়ছেন কি না।')}
       ${T('#/pause', '⏳', '১০ মিনিট বিরতি', 'টাকা পাঠানোর আগে থামুন, চেকলিস্টে মিলিয়ে নিন।')}
       ${T('#/audit', '🔐', 'সুরক্ষা অডিট', 'আপনার ফোন ও অ্যাকাউন্টের সুরক্ষা কতটা, স্কোর দেখুন।')}
+      ${T('#/lookalike', '🕸️', L('ভুয়া লিংক ডিটেক্টর', 'Look-alike link check'), L('bKash, ব্যাংক বা কুরিয়ারের নকল ঠিকানা অক্ষর ধরে ধরুন।', 'Catch fake bKash, bank or courier addresses letter by letter.'), 'new')}
     </div>
     <h2 class="sec">পরিবার ও বিপদে</h2>
     <div class="tiles">
       ${T('#/sos', '🆘', 'SOS, প্রতারিত হয়েছি', 'প্রথম ১৫ মিনিটে কী করবেন, অভিযোগের ড্রাফটসহ।', 'sos')}
       ${T('#/shield', '🏡', 'ফ্যামিলি শিল্ড', 'কোডওয়ার্ড বানান, বড় লেখা, শেয়ার কার্ড।')}
+      ${T('#/secret', '🗝️', L('সিক্রেট ওয়ার্ড প্ল্যান', 'Secret word plan'), L('ভয়েস-ক্লোন ঠেকাতে পরিবারের প্রত্যেকের জন্য গোপন শব্দ।', 'A private word for each family member against voice clones.'))}
       ${T('#/cert', '📜', 'প্রশিক্ষণ সনদ', 'আপনার স্ক্যাম আইকিউসহ সনদ ডাউনলোড করুন।')}
       ${T('#/me', '🏅', 'প্রোফাইল', 'র‍্যাংক, ব্যাজ ও অগ্রগতি।')}
     </div>
@@ -436,6 +442,7 @@
         <p class="sm mut" style="margin-top:10px">🔒 বিশ্লেষণ আপনার ডিভাইসেই হয়। "AI গভীর বিশ্লেষণ" বা স্ক্রিনশট বেছে নিলেই শুধু টেক্সট/ছবি AI সার্ভারে যায়।</p>
       </div><div id="out" style="margin-top:16px"></div>`;
     const out = $('#out'), txt = $('#txt');
+    try { const pf = sessionStorage.getItem('sg.prefill'); if (pf) { sessionStorage.removeItem('sg.prefill'); txt.value = pf; setTimeout(() => $('#go') && $('#go').click(), 0); } } catch (e) { /* ignore */ }
     $$('[data-s]').forEach((b) => b.addEventListener('click', () => { txt.value = (LANG === 'en' && SG.SAMPLES_EN ? SG.SAMPLES_EN : SG.SAMPLES)[+b.dataset.s].t; analyze(); }));
     $('#clr').onclick = () => { txt.value = ''; out.innerHTML = ''; };
     $('#go').onclick = analyze;
@@ -813,6 +820,7 @@
   /* =========================================================
      boot
   ========================================================= */
+  if (SG.extend) SG.extend({ VIEWS, get V() { return V; }, get S() { return S; }, restoreS: (snap) => { S = Object.assign(defaults(), snap); save(); }, save, $, $$, esc, bn, tx, L, toast, addXP, award, rosette, stars, speak, copy, waShare, aiCall, aiStatus, wait, SC, route, rankInfo, PERSONAS, dayKey, lang: () => LANG, FAST, setCleanup: (f) => { cleanup = f; }, shuffle });
   $('#bigBtn').addEventListener('click', () => { S.big = !S.big; save(); applyBig(); toast(S.big ? 'বড় লেখা চালু' : 'বড় লেখা বন্ধ'); });
   $('#moreBtn').addEventListener('click', () => { const m = $('#more'); m.hidden = !m.hidden; $('#moreBtn').setAttribute('aria-expanded', String(!m.hidden)); });
   $('#more').addEventListener('click', (e) => { if (e.target.id === 'more' || e.target.closest('a')) closeMore(); });

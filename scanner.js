@@ -243,14 +243,19 @@
     const t = norm(text || '');
     const neg = /(না\b|নাই|নেই|কখনো|কক্ষনো|পারব না|দেব না|দিব না|দেবো না|বলব না|পাঠাব না|করব না)/;
     const safeRe = /(দেব না|দিব না|দেবো না|বলব না|দেবনা|কল কেটে|ব্লক|রিপোর্ট|যাচাই|বিশ্বাস করি না|স্ক্যাম|প্রতারণা|প্রতারক|থানা|1624[7]|16167|999|ভিডিও কল|কোডওয়ার্ড|পরিবারকে|জিজ্ঞেস করে|অফিসিয়াল|আপনি কে|পরিচয়)/;
+    // ইংরেজি উত্তরের জন্য সহায়ক নিয়ম (ইংরেজি মোডে অফলাইন ইঞ্জিন)
+    const enNeg = /\b(no|not|never|won'?t|don'?t|do not|can'?t|cannot|refuse|wouldn'?t|isn'?t)\b/i;
+    const enSafe = /(won'?t|will not|don'?t share|not sharing|hang(ing)? up|\bblock|\breport|verify|call (the )?(official|bank|helpline|number)|check (with|myself)|\bscam|fraud|police|official|helpline|secret word|video call)/i;
+    const enFatal = /\b(i('| a)?ll send|i am sending|i'?m sending|sending (it|now)|i sent|here (is|are)|my (otp|pin|code|password)|installing|ok(ay)? (i|sure)|sure,? (i|here)|i will (pay|send|give|share|tell))\b/i;
     const codeLike = /\b\d{4,6}\b/.test(t);
     const fatalVerb = /(পাঠাচ্ছি|পাঠালাম|পাঠিয়ে দিচ্ছি|পাঠিয়ে দিলাম|ইনস্টল করছি|বলছি|দিচ্ছি|দিয়ে দিচ্ছি|ঠিক আছে.{0,12}(দিই|দেই|দিচ্ছি))/;
-    if (codeLike && !neg.test(t)) return 'fatal';
-    if (fatalVerb.test(t) && !neg.test(t)) return 'fatal';
-    if (safeRe.test(t)) return 'safe';
-    if (neg.test(t) && t.length > 6) return 'safe';
+    const negAll = neg.test(t) || enNeg.test(t);
+    if (codeLike && !negAll) return 'fatal';
+    if ((fatalVerb.test(t) || enFatal.test(t)) && !negAll) return 'fatal';
+    if (safeRe.test(t) || enSafe.test(t)) return 'safe';
+    if (negAll && t.length > 6) return 'safe';
     return 'risky';
   }
 
-  SG.scanner = { analyze, highlight, analyzeUrl, extractUrls, judgeReply, RULES };
+  SG.scanner = { analyze, highlight, analyzeUrl, extractUrls, judgeReply, RULES, OFFICIAL, BRANDS, leet, lev, regDomain };
 })();
