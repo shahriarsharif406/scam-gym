@@ -5,12 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Scam Gym — স্ক্যামের বিরুদ্ধে আপনার ট্রেনিং জিম</title>
 <meta name="description" content="AI প্রতারক সেজে আপনাকে ফাঁদে ফেলার চেষ্টা করবে; আপনি অনুশীলন করে শিখবেন কীভাবে ঠেকাতে হয়। স্ক্যান, SOS ও ফ্যামিলি শিল্ডসহ বাংলাদেশের জন্য তৈরি।">
-<meta name="theme-color" content="#051516">
+<meta name="theme-color" content="#050a1c">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230d2b2c'/%3E%3Cg fill='none' stroke='%23bfe3d2' stroke-width='1.6'%3E%3Cellipse cx='32' cy='32' rx='24' ry='8'/%3E%3Cellipse cx='32' cy='32' rx='24' ry='8' transform='rotate(45 32 32)'/%3E%3Cellipse cx='32' cy='32' rx='24' ry='8' transform='rotate(90 32 32)'/%3E%3Cellipse cx='32' cy='32' rx='24' ry='8' transform='rotate(135 32 32)'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/hind-siliguri-bengali-500-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/noto-serif-bengali-bengali-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{var t=localStorage.getItem("sg.theme");document.documentElement.setAttribute("data-theme",t==="light"?"light":"night");}catch(e){document.documentElement.setAttribute("data-theme","night")}</script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -36,10 +37,28 @@
       <a data-r="sos" href="#/sos" class="sosl">SOS</a>
     </nav>
 
+    <button class="aa" id="themeBtn" aria-label="থিম বদলান" title="থিম">☀</button>
     <button class="aa" id="langBtn" aria-label="View in English">EN</button>
     <button class="aa" id="bigBtn" title="বড় লেখা (বয়স্কদের জন্য)" aria-pressed="false">Aa</button>
   </div>
 </header>
+
+<aside class="side" id="side" aria-label="সাইডবার মেনু">
+  <nav>
+    <a data-r="home" href="#/home"><i>🏠</i><span>হোম</span></a>
+    <a data-r="arena" href="#/arena"><i>🎮</i><span>অ্যারেনা</span></a>
+    <a data-r="live" href="#/live"><i>✨</i><span>লাইভ AI</span></a>
+    <a data-r="scan" href="#/scan"><i>🔎</i><span>স্ক্যান</span></a>
+    <a data-r="lookalike" href="#/lookalike"><i>🔗</i><span>লিংক ডিটেক্টর</span></a>
+    <a data-r="voice" href="#/voice"><i>🎙️</i><span>ভয়েস কল</span></a>
+    <a data-r="secret" href="#/secret"><i>🗝️</i><span>সিক্রেট ওয়ার্ড</span></a>
+    <a data-r="audit" href="#/audit"><i>🛡️</i><span>সুরক্ষা অডিট</span></a>
+    <a data-r="shield" href="#/shield"><i>👨‍👩‍👧</i><span>ফ্যামিলি শিল্ড</span></a>
+    <a data-r="sos" href="#/sos" class="sosl"><i>🆘</i><span>SOS গাইড</span></a>
+    <button type="button" id="smore"><i>⋯</i><span>আরও টুল</span></button>
+  </nav>
+  <div class="side-iq" id="sideiq"></div>
+</aside>
 
 <main id="view" tabindex="-1" aria-live="polite"></main>
 

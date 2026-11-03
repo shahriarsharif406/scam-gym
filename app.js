@@ -135,7 +135,7 @@
   const GROUP = { play: 'arena', spot: 'more', library: 'more', shield: 'more', triage: 'more', audit: 'more', pause: 'more', cert: 'more', me: 'more', voice: 'arena', lookalike: 'scan', secret: 'more', alerts: 'more', offline: 'more', card: 'more' };
   function setNav(n) {
     const g = GROUP[n] || n;
-    $$('#dnav [data-r], #bnav [data-r]').forEach((a) => a.classList.toggle('on', a.dataset.r === g));
+    ['#dnav', '#bnav', '#side'].forEach((sel) => { const as = $$(sel + ' [data-r]'); const ex = as.some((x) => x.dataset.r === n); as.forEach((x) => x.classList.toggle('on', x.dataset.r === (ex ? n : g))); });
   }
   function closeMore() { const m = $('#more'); if (m) { m.hidden = true; $('#moreBtn').setAttribute('aria-expanded', 'false'); } }
   function route() {
@@ -153,6 +153,17 @@
   /* =========================================================
      HOME
   ========================================================= */
+  const ART = {
+    arena: '<svg viewBox="0 0 120 130"><rect x="30" y="8" width="60" height="112" rx="12" fill="#101b45" stroke="#6f8cff" stroke-width="2"/><rect x="38" y="22" width="44" height="8" rx="4" fill="#2de2b4" opacity=".7"/><rect x="38" y="40" width="44" height="22" rx="6" fill="#ff5d7e" opacity=".28"/><rect x="38" y="68" width="44" height="6" rx="3" fill="#6f8cff" opacity=".5"/><rect x="38" y="80" width="30" height="6" rx="3" fill="#6f8cff" opacity=".35"/><circle cx="88" cy="98" r="15" fill="#ff3d63"/><path d="M88 90v10" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="88" cy="105" r="1.8" fill="#fff"/></svg>',
+    ai: '<svg viewBox="0 0 120 130"><line x1="60" y1="14" x2="60" y2="28" stroke="#7df2d2" stroke-width="3"/><circle cx="60" cy="12" r="5" fill="#2de2b4"/><rect x="26" y="28" width="68" height="54" rx="22" fill="#eaf1ff"/><rect x="36" y="40" width="48" height="30" rx="14" fill="#0b1433"/><circle cx="50" cy="55" r="6" fill="#2de2e6"/><circle cx="70" cy="55" r="6" fill="#2de2e6"/><rect x="40" y="88" width="40" height="26" rx="12" fill="#cfdcff"/><rect x="14" y="44" width="8" height="22" rx="4" fill="#9fb4ff"/><rect x="98" y="44" width="8" height="22" rx="4" fill="#9fb4ff"/><path d="M92 96h22a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6h-10l-8 7v-7h-4a6 6 0 0 1-6-6v-8a6 6 0 0 1 6-6z" fill="#2de2b4"/></svg>',
+    scan: '<svg viewBox="0 0 120 130"><rect x="22" y="14" width="64" height="84" rx="8" fill="#e9eeff"/><rect x="32" y="28" width="38" height="5" rx="2.5" fill="#8aa0e8"/><rect x="32" y="40" width="44" height="5" rx="2.5" fill="#b9c7f2"/><rect x="32" y="52" width="30" height="5" rx="2.5" fill="#b9c7f2"/><path d="M78 8l16 28H62z" fill="#ff3d63"/><path d="M78 18v8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="78" cy="31" r="1.6" fill="#fff"/><circle cx="74" cy="84" r="20" fill="rgba(45,226,230,.18)" stroke="#2de2e6" stroke-width="5"/><path d="M89 99l18 18" stroke="#2de2e6" stroke-width="7" stroke-linecap="round"/></svg>',
+    shield: '<svg viewBox="0 0 120 130"><defs><linearGradient id="shg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2de2b4"/><stop offset="1" stop-color="#2f7bff"/></linearGradient></defs><path d="M60 6 108 24v36c0 32-22 52-48 62C34 112 12 92 12 60V24z" fill="rgba(47,123,255,.18)" stroke="url(#shg)" stroke-width="4"/><path d="M38 62l16 16 30-34" fill="none" stroke="#2de2b4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    flag: '<svg viewBox="0 0 90 56"><rect width="90" height="56" rx="6" fill="#0a7a4a"/><circle cx="40" cy="28" r="16" fill="#e8213f"/></svg>'
+  };
+  const iqOf = () => Math.min(99, 35 + Math.floor(S.xp / 25) + S.spotBest * 2 + Math.min(S.scans, 10));
+  const ring = (v, size = 84) => { const r = 34, c = 2 * Math.PI * r; return `<svg class="ring" width="${size}" height="${size}" viewBox="0 0 84 84" role="img" aria-label="${v}/100"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2de2b4"/><stop offset="1" stop-color="#2f7bff"/></linearGradient></defs><circle cx="42" cy="42" r="${r}" fill="none" stroke="rgba(140,165,255,.2)" stroke-width="8"/><circle cx="42" cy="42" r="${r}" fill="none" stroke="url(#rg)" stroke-width="8" stroke-linecap="round" stroke-dasharray="${(c * v / 100).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 42 42)"/><text x="42" y="49" text-anchor="middle" font-family="Fraunces,serif" font-weight="800" font-size="22" fill="currentColor">${bn(v)}</text></svg>`; };
+  SG.ring = ring; SG.iqOf = iqOf;
+
   VIEWS.home = function () {
     const ri = rankInfo(S.xp), d = dailyScenario();
     const tip = SG.TIPS[Math.floor(Date.now() / 864e5) % SG.TIPS.length];
@@ -176,6 +187,10 @@
           <div class="hd-opt good"><span>${L('কল কেটে নিজে যাচাই করি', 'Hang up and verify myself')}</span></div>
           <div class="hd-stamp">${L('ফাঁদ ধরা পড়েছে', 'Trap spotted')}</div>
         </div>
+        <span class="hb hb1">${L('আপনার অ্যাকাউন্ট ব্লক হবে!', 'Your account will be blocked!')}</span>
+        <span class="hb hb2">${L('এই লিংকে ক্লিক করুন!', 'Click this link!')}</span>
+        <span class="hb hb3">${L('এখনই OTP দিন!', 'Send OTP now!')}</span>
+        <span class="hshield">${ART.shield}</span>
       </div>
       <div class="micro" aria-hidden="true">${'স্ক্যাম জিম প্রশিক্ষণ নোট নমুনা '.repeat(60)}</div>
     </section>
@@ -188,8 +203,8 @@
     </div>
     ${SG.alertStrip ? SG.alertStrip() : ''}
     <div class="grid g3" style="margin-top:20px">
-      <div class="card"><div class="lvl"><div class="ico">${ri.cur.i}</div>
-        <div style="flex:1"><div class="row sp"><b style="font-family:var(--disp)">${ri.cur.n}</b><span class="sm mut">${bn(S.xp)} XP</span></div>
+      <div class="card"><div class="lvl"><div class="ico">${ri.cur.i}</div><div class="iqr" title="${L('স্ক্যাম আইকিউ', 'Scam IQ')}">${ring(iqOf(), 64)}<small>${L('আইকিউ', 'IQ')}</small></div>
+        <div style="flex:1"><div class="row sp"><b style="font-family:var(--disp)">${ri.cur.i} ${ri.cur.n}</b><span class="sm mut">${bn(S.xp)} XP</span></div>
         <div class="bar" style="margin:8px 0 4px"><i style="width:${ri.pct}%"></i></div><span class="sm mut">${ri.nx ? 'পরের র‍্যাংক: ' + ri.nx.n : 'সর্বোচ্চ র‍্যাংক'} · স্ট্রিক ${bn(S.streak)} দিন</span>
         <div class="serial">ক্রমিক নং SG-${bn(S.serial)}</div><a class="sm" href="#/me" style="font-weight:600;display:inline-block;margin-top:4px">${L('প্রোফাইল ও ব্যাজ ›', 'Profile and badges ›')}</a></div></div></div>
       <a class="card daily" href="#/play/${d.id}" style="display:block"><div class="row sp"><span class="pill warn">আজকের চ্যালেঞ্জ</span>${dailyDone ? '<span class="pill ok">সম্পন্ন</span>' : '<span class="pill acc">+৫০ বোনাস XP</span>'}</div>
@@ -199,9 +214,9 @@
 
     <h2 class="sec">${L('এখান থেকে শুরু করুন', 'Start here')}</h2>
     <div class="core">
-      <a class="cc dark" href="#/arena"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ci">⚡</span><h3>${L('অ্যারেনা', 'Arena')}</h3><p>${L('১০টি বাস্তব ধাঁচের পরিস্থিতিতে প্রতারকের চাপ সামলান। ভুল করলে কোচ বুঝিয়ে দেবে।', 'Handle a scammer\'s pressure in 10 realistic situations. The coach explains every mistake.')}</p><b>${L('অনুশীলন শুরু করুন', 'Start practising')} ›</b></a>
-      <a class="cc" href="#/live"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ci">🤖</span><h3>${L('লাইভ AI', 'Live AI')}</h3><p>${L('AI নিজে প্রতারক সাজে। যা খুশি লিখুন, প্রতিটি উত্তরের নিরাপত্তা যাচাই হবে।', 'The AI plays the scammer. Type anything and each reply is graded for safety.')}</p><b>${L('AI-এর মুখোমুখি হন', 'Face the AI')} ›</b></a>
-      <a class="cc" href="#/scan"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ci">🔎</span><h3>${L('স্ক্যানার', 'Scanner')}</h3><p>${L('সন্দেহজনক মেসেজ বা লিংক দিন। কী সন্দেহজনক, কী যাচাই হয়নি, এখন কী করবেন সব দেখুন।', 'Paste a suspicious message or link. See what looks wrong, what could not be checked, and what to do next.')}</p><b>${L('মেসেজ যাচাই করুন', 'Check a message')} ›</b></a>
+      <a class="cc dark" href="#/arena"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ca" aria-hidden="true">${ART.arena}</span><span class="ci">⚡</span><h3>${L('অ্যারেনা', 'Arena')}</h3><p>${L('১০টি বাস্তব ধাঁচের পরিস্থিতিতে প্রতারকের চাপ সামলান। ভুল করলে কোচ বুঝিয়ে দেবে।', 'Handle a scammer\'s pressure in 10 realistic situations. The coach explains every mistake.')}</p><b>${L('অনুশীলন শুরু করুন', 'Start practising')} ›</b></a>
+      <a class="cc" href="#/live"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ca" aria-hidden="true">${ART.ai}</span><span class="ci">🤖</span><h3>${L('লাইভ AI', 'Live AI')}</h3><p>${L('AI নিজে প্রতারক সাজে। যা খুশি লিখুন, প্রতিটি উত্তরের নিরাপত্তা যাচাই হবে।', 'The AI plays the scammer. Type anything and each reply is graded for safety.')}</p><b>${L('AI-এর মুখোমুখি হন', 'Face the AI')} ›</b></a>
+      <a class="cc" href="#/scan"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ca" aria-hidden="true">${ART.scan}</span><span class="ci">🔎</span><h3>${L('স্ক্যানার', 'Scanner')}</h3><p>${L('সন্দেহজনক মেসেজ বা লিংক দিন। কী সন্দেহজনক, কী যাচাই হয়নি, এখন কী করবেন সব দেখুন।', 'Paste a suspicious message or link. See what looks wrong, what could not be checked, and what to do next.')}</p><b>${L('মেসেজ যাচাই করুন', 'Check a message')} ›</b></a>
     </div>
     <h2 class="sec">${L('আরও টুল', 'More tools')}</h2>
     <div class="tiles">
@@ -222,11 +237,14 @@
       ${T('#/cert', '📜', 'প্রশিক্ষণ সনদ', 'আপনার স্ক্যাম আইকিউসহ সনদ ডাউনলোড করুন।')}
     </div>
 
-    <h2 class="sec">কীভাবে কাজ করে</h2>
-    <div class="grid g3 steps3">
-      <div class="card"><b>অনুশীলন করুন</b><p class="sm mut">নিরাপদ জায়গায় প্রতারকের মুখোমুখি হয়ে ভুল করুন ও শিখুন। কোনো টাকা বা তথ্য ঝুঁকিতে নেই।</p></div>
-      <div class="card"><b>ধরুন</b><p class="sm mut">সন্দেহজনক মেসেজ, কল বা লিংক স্ক্যান করে কোন কৌশলে ফাঁদ পাতা হয়েছে বুঝে নিন।</p></div>
-      <div class="card"><b>সামলান</b><p class="sm mut">ক্ষতি হয়ে গেলে SOS গাইড ধাপে ধাপে বলে দেবে কী করতে হবে এবং অভিযোগ লিখে দেবে।</p></div>
+    <h2 class="sec">${L('আপনার সুরক্ষা যাত্রা', 'Your safety journey')}</h2>
+    <div class="journey">
+      <ol class="jr-steps">
+        ${[[S.plays > 0, L('অনুশীলন করুন', 'Practice'), L('সিমুলেশনে প্রতারকের মুখোমুখি হোন', 'Face a scammer in a simulation'), '#/arena'], [S.scans > 0 || S.lookBest > 0, L('যাচাই করুন', 'Check'), L('মেসেজ বা লিংক স্ক্যান করুন', 'Scan a message or link'), '#/scan'], [S.wins > 0, L('জিতুন', 'Win'), L('একটি সিমুলেশন নিরাপদে শেষ করুন', 'Finish a simulation safely'), '#/arena']].map((s, i) => `<li class="${s[0] ? 'done' : ''}"><a href="${s[3]}"><i>${s[0] ? '✓' : bn(i + 1)}</i><b>${s[1]}</b><span>${s[2]}</span></a></li>`).join('')}
+      </ol>
+      <a class="jr-cert" href="#/cert"><span class="jr-ic">🏆</span><b>${L('সনদ অর্জন করুন', 'Earn your certificate')}</b><span>${L('স্ক্যাম আইকিউ', 'Scam IQ')} ${bn(iqOf())}</span></a>
+    </div>
+    <div class="bdband"><span class="bdflag" aria-hidden="true">${ART.flag}</span><div><h3>${L('বাংলাদেশকে স্ক্যামমুক্ত রাখি', 'Keep Bangladesh scam-free')}</h3><p>${L('পরিবারকে শেখান। একজন জানলে আরেকজন বাঁচে।', 'Teach your family. When one person learns, another is saved.')}</p></div><a class="btn" href="#/shield">${L('পরিবারকে শেখান', 'Teach your family')}</a></div>
     </div>`;
   };
 
@@ -682,7 +700,7 @@
   VIEWS.me = function () {
     const ri = rankInfo(S.xp);
     const prog = SG.SCENARIOS.map((s) => { const d = S.done[s.id]; return `<div class="row sp" style="padding:9px 0;border-top:1px solid var(--line)"><span>${s.icon} ${esc(s.title)}</span><span>${stars(d ? d.best : 0)}</span></div>`; }).join('');
-    V.innerHTML = `<div class="stack"><div class="card glow"><div class="lvl"><div class="ico">${ri.cur.i}</div><div style="flex:1"><h2>${ri.cur.n}</h2><div class="bar" style="margin:8px 0 4px"><i style="width:${ri.pct}%"></i></div><span class="sm mut">${bn(S.xp)} XP${ri.nx ? ' · পরের র‍্যাংক: ' + ri.nx.n + ' (' + bn(ri.nx.xp) + ' XP)' : ' · সর্বোচ্চ র‍্যাংক!'}</span></div></div></div>
+    V.innerHTML = `<div class="stack"><div class="card glow"><div class="lvl"><div class="ico">${ri.cur.i}</div><div class="iqr" title="${L('স্ক্যাম আইকিউ', 'Scam IQ')}">${ring(iqOf(), 64)}<small>${L('আইকিউ', 'IQ')}</small></div><div style="flex:1"><h2>${ri.cur.n}</h2><div class="bar" style="margin:8px 0 4px"><i style="width:${ri.pct}%"></i></div><span class="sm mut">${bn(S.xp)} XP${ri.nx ? ' · পরের র‍্যাংক: ' + ri.nx.n + ' (' + bn(ri.nx.xp) + ' XP)' : ' · সর্বোচ্চ র‍্যাংক!'}</span></div></div></div>
       <div class="row"><a class="btn pri" href="#/cert">আমার সনদ</a><a class="btn" href="#/audit">সুরক্ষা অডিট</a></div>
       <div class="stat"><div><b>${bn(S.wins)}</b><span>জয়</span></div><div><b>${bn(S.scans)}</b><span>স্ক্যান</span></div><div><b>🔥${bn(S.streak)}</b><span>দিনের স্ট্রিক</span></div></div>
       ${radarCard()}
@@ -854,6 +872,7 @@
   try { if ('serviceWorker' in navigator && /^https?:/.test(location.protocol)) navigator.serviceWorker.register('sw.js'); } catch (e) { /* PWA ঐচ্ছিক */ }
   const lg = $('#logo'); if (lg) lg.innerHTML = rosette({ n: 14, rx: 46, ry: 16, sw: 3 });
   const dm = $('#dmore'); if (dm) dm.addEventListener('click', () => { const m = $('#more'); m.hidden = !m.hidden; });
+  const sm = $('#smore'); if (sm) sm.addEventListener('click', () => { const m = $('#more'); m.hidden = !m.hidden; });
   const lbtn = $('#langBtn');
   if (lbtn) lbtn.addEventListener('click', () => { LANG = LANG === 'en' ? 'bn' : 'en'; S.lang = LANG; save(); route(); applyLang(); });
   new MutationObserver(trSoon).observe(document.body, { childList: true, subtree: true });
