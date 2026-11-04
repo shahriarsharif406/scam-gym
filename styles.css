@@ -789,3 +789,75 @@ html[data-theme=night] .ti,html[data-theme=night] .cc .ci{background:linear-grad
 .pgscene .sc-ref rect{fill:#fff}
 @media(max-width:640px){.pgscene{height:112px;border-radius:14px}}
 @media(min-width:1100px){.pgscene{height:170px}}
+
+/* =========================================================
+   EMBER: পুরো অ্যাপ কমলা-প্রধান (Night থিম)
+   ========================================================= */
+html[data-theme=night]{--paper:#5a1a06;--paper2:#74240a;--ink:#fff8f0;--ink2:#ffe3c8;--mut:#ffc9a0;--note:#ffb020;--note2:#ffd27a;--mint:#8a3a10;--stamp:#ff4d6a;--gold:#ffd25a;--line:rgba(255,200,140,.3);--line2:rgba(255,200,140,.5);--inkbg:#3a1005;--onink:#fff8f0;--ok:#56e6a4;--warn:#ffd25a;
+  --sh1:0 1px 0 rgba(255,255,255,.12) inset,0 20px 40px -24px rgba(40,8,0,.85);--sh2:0 1px 0 rgba(255,255,255,.14) inset,0 28px 54px -22px rgba(40,8,0,.95),0 0 0 1px rgba(255,190,100,.4)}
+html[data-theme=night],html[data-theme=night] body{background-color:#6a1d07;color:var(--ink)}
+html[data-theme=night] body{background-image:radial-gradient(900px 620px at 92% -10%,rgba(255,196,64,.75),transparent 62%),radial-gradient(820px 620px at -4% 24%,rgba(255,96,40,.6),transparent 60%),radial-gradient(820px 560px at 58% 116%,rgba(255,214,90,.5),transparent 62%),linear-gradient(180deg,#b8360c 0%,#8a2508 46%,#4e1304 100%)}
+html[data-theme=night] .top{background:rgba(70,16,4,.82);border-bottom:1px solid rgba(255,190,110,.35)}
+html[data-theme=night] .foot{background:rgba(58,14,4,.72);border-color:rgba(255,190,110,.3);color:#ffd9b8}
+html[data-theme=night] .bnav{background:rgba(58,14,4,.94);border:1px solid rgba(255,190,110,.4)}
+html[data-theme=night] .side{background:linear-gradient(180deg,rgba(98,26,6,.94),rgba(66,16,4,.94));border-right:1px solid rgba(255,190,110,.3)}
+html[data-theme=night] .dnav .on,html[data-theme=night] .bnav .on{background:linear-gradient(135deg,#ffd25a,#ff8a1f);color:#2a1200}
+html[data-theme=night] .side .on{background:linear-gradient(90deg,rgba(255,176,32,.38),rgba(255,176,32,.06));box-shadow:inset 3px 0 0 #ffb020}
+html[data-theme=night] .dnav a:hover,html[data-theme=night] .dnav button:hover{background:rgba(255,190,110,.16)}
+html[data-theme=night] .card,html[data-theme=night] .tile,html[data-theme=night] .sc,html[data-theme=night] .cc:not(.dark),html[data-theme=night] .facts,html[data-theme=night] .tip{background:linear-gradient(160deg,rgba(255,150,60,.2),rgba(66,16,4,.8));border-color:rgba(255,200,140,.4)}
+html[data-theme=night] .facts b{background:linear-gradient(135deg,#ffe08a,#ffa21f);-webkit-background-clip:text;background-clip:text;color:transparent}
+html[data-theme=night] .hero{background:radial-gradient(700px 440px at 98% -14%,rgba(255,226,120,.95),transparent 62%),radial-gradient(640px 440px at -8% 118%,rgba(255,90,50,.8),transparent 62%),linear-gradient(160deg,#f2761c 0%,#d4411c 52%,#8c1f2e 100%);border:1px solid rgba(255,220,160,.5);box-shadow:0 40px 70px -34px rgba(60,10,0,.85)}
+html[data-theme=night] .hero-in h1{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#fff;text-shadow:0 2px 22px rgba(80,16,0,.5)}
+html[data-theme=night] .hero p,html[data-theme=night] .hero .tagline{color:#fff1e0}
+html[data-theme=night] .hero .btn:not(.pri){background:rgba(60,12,2,.4);border:1px solid rgba(255,230,190,.6);color:#fff}
+html[data-theme=night] .sec{color:#fff}
+html[data-theme=night] .landband{--ls0:#6a2150;--ls1:#e8602a;--ls2:#ffc060;--lfar:#6a2a52;--lmid:#4e1e44;--lnear:#2e1030;--lpalm:#240c26;--lboat:#14060f;--lr1:#a8607a;--lr2:#3a1030;border-color:rgba(255,200,140,.4)}
+html[data-theme=night] .pgscene{border-color:rgba(255,220,170,.4)}
+html[data-theme=night] .ring text{fill:#fff}
+html[data-theme=night] input,html[data-theme=night] textarea,html[data-theme=night] .field{background:rgba(40,8,0,.45);border-color:rgba(255,200,140,.45);color:#fff}
+html[data-theme=night] .pill{background:rgba(255,176,32,.16);border-color:rgba(255,200,140,.5);color:#ffe9d2}
+html[data-theme=night] .pill.acc{background:linear-gradient(135deg,#ffd25a,#ff8a1f);color:#2a1200;border-color:transparent}
+.lv-card .ico,.ar-card .ico{background:rgba(255,176,32,.2)}
+.lv-chat .phone,html[data-theme=night] .phone{border-color:rgba(255,200,140,.45);box-shadow:0 30px 60px -28px rgba(60,10,0,.85)}
+.lv-hero{border-color:rgba(255,230,190,.55)}
+.ci-bot svg,.ar-bot svg{width:100%;height:100%;display:block}
+.cc .ci.ci-bot{padding:6px}
+html[data-theme=night] .cc .ci.ci-bot{background:rgba(255,255,255,.18)}
+
+/* ---- পেজ-হিরো (অ্যারেনা, অডিট) ---- */
+.pghero{position:relative;border-radius:22px;overflow:hidden;margin:0 0 18px;min-height:230px;border:1px solid rgba(255,225,170,.5);box-shadow:0 30px 60px -30px rgba(50,8,0,.85)}
+.pghero .pgscene{position:absolute;inset:0;height:auto;margin:0;border:0;border-radius:0;box-shadow:none}
+.pghero .pgscene::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(40,6,0,.72),rgba(40,6,0,.28) 55%,rgba(40,6,0,.05))}
+.pgh-in{position:relative;z-index:2;padding:28px 26px 24px;color:#fff;max-width:620px}
+.pgh-in h1{font-size:clamp(1.7rem,5vw,2.4rem);font-weight:800;margin:0 0 6px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.pgh-in p{color:#fff1e0;margin:0 0 14px;max-width:480px;text-shadow:0 1px 10px rgba(0,0,0,.55)}
+.pgh-stats{display:flex;gap:10px;flex-wrap:wrap}
+.pgh-stats span{display:flex;flex-direction:column;min-width:84px;padding:8px 14px;border-radius:14px;background:rgba(40,8,0,.45);border:1px solid rgba(255,220,170,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:.78rem;color:#ffe3c8}
+.pgh-stats b{font-size:1.25rem;color:#ffd25a;line-height:1.2}
+.ar-live{display:flex;gap:14px;align-items:center;margin-bottom:14px;border-radius:18px}
+.ar-live .ico.ar-bot{width:58px;height:58px;border-radius:50%;padding:7px;display:block;background:rgba(255,176,32,.25);border:0;box-shadow:0 0 0 2px rgba(255,210,120,.7) inset}
+.ar-card{position:relative;border-radius:18px;overflow:hidden;align-items:center}
+.ar-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#ffd25a}
+.ar-l2::before{background:#ff9a2e}.ar-l3::before{background:#ff4d6a}
+.ar-card .ico{width:56px;height:56px;border:0;font-size:1.6rem}
+.ar-b{flex:1;min-width:0}.ar-r{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.ar-go{font-size:1.8rem;line-height:1;color:#ffb020;transition:transform .15s}.ar-card:hover .ar-go{transform:translateX(4px)}
+/* অডিট */
+.au-in{display:flex;gap:24px;align-items:center;justify-content:space-between;max-width:none;flex-wrap:wrap}
+.au-in>div:first-child{max-width:460px}
+.au-score{display:flex;align-items:center;gap:16px;padding:12px 18px;border-radius:20px;background:rgba(40,8,0,.5);border:1px solid rgba(255,220,170,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.au-ring{position:relative;width:112px;height:112px;flex:none}.au-ring svg{width:100%;height:100%}
+.au-ring .v{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15}
+.au-ring .v b{font-size:1.7rem;color:#fff}.au-ring .v span{font-size:.62rem;color:#ffd9b8}
+.au-msg{margin:0;max-width:170px;color:#fff;font-weight:600;font-size:.95rem}
+.au-grid{display:grid;gap:16px;grid-template-columns:1fr;align-items:start}
+@media(min-width:960px){.au-grid{grid-template-columns:1.6fr 1fr}.au-side{position:sticky;top:80px}}
+.au-list .sec{margin-top:0}
+.au-item{display:flex;gap:14px;align-items:center;padding:14px 16px;margin-bottom:10px;border-radius:16px;cursor:pointer;background:linear-gradient(160deg,rgba(255,150,60,.2),rgba(66,16,4,.8));border:1px solid rgba(255,200,140,.4);transition:transform .15s,border-color .15s,box-shadow .15s}
+.au-item:hover{transform:translateY(-2px);border-color:#ffb020;box-shadow:0 14px 28px -16px rgba(255,160,40,.6)}
+.au-item:has(input:checked){border-color:#56e6a4;background:linear-gradient(160deg,rgba(86,230,164,.22),rgba(40,40,20,.75))}
+.au-ic{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:1.3rem;background:rgba(255,176,32,.22)}
+.au-item input{flex:none;order:3;margin-left:auto;width:22px;height:22px;accent-color:#ffb020}
+.au-item>div{flex:1;min-width:0}
+@media(max-width:560px){.pgh-in{padding:20px 16px}.au-in{gap:14px}.pghero{min-height:0}}
+.pghero .pgcap{left:auto;right:12px;bottom:10px;z-index:3}

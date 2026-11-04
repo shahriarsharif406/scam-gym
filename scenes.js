@@ -79,6 +79,33 @@
       <rect y="138" width="1200" height="62" fill="url(#kg2)"/><g fill="#1f5a2a" opacity=".85">${[90, 300, 760, 1080].map((x) => `<rect x="${x}" y="108" width="5" height="32"/><circle cx="${x + 2}" cy="102" r="20"/>`).join('')}</g>
       ${k}`;
     },
+
+    sundarban: () => {
+      seed = 21; let L = '', R = '', roots = (x, y, n) => { let o = ''; for (let k = -n; k <= n; k++) o += `<path d="M${x + k * 5} ${y - 16}Q${x + k * 16} ${y - 2} ${x + k * 20} ${y + 16}" stroke="#2a0f05" stroke-width="2.4" fill="none"/>`; return o; };
+      [[40, 120, 40], [130, 126, 32], [230, 118, 44], [330, 128, 30]].forEach((a) => { L += roots(a[0], a[1] + 28, 2) + `<circle cx="${a[0]}" cy="${a[1]}" r="${a[2]}" fill="#3a1608"/><circle cx="${a[0] + 22}" cy="${a[1] + 6}" r="${a[2] * 0.75}" fill="#4a1c0a"/>`; });
+      [[860, 124, 38], [960, 116, 46], [1060, 126, 36], [1150, 120, 44]].forEach((a) => { R += roots(a[0], a[1] + 28, 2) + `<circle cx="${a[0]}" cy="${a[1]}" r="${a[2]}" fill="#3a1608"/><circle cx="${a[0] - 20}" cy="${a[1] + 6}" r="${a[2] * 0.75}" fill="#4a1c0a"/>`; });
+      return `<defs>${grad('sdg1', [[0, '#7a2a5a'], [0.4, '#ff7a3a'], [0.75, '#ffc04a'], [1, '#ffe7a0']])}${grad('sdg2', [[0, '#ffa34a'], [1, '#6a1f12']])}${glow('sdgs', '#fff0b0')}</defs>
+      <rect width="1200" height="200" fill="url(#sdg1)"/><circle cx="600" cy="112" r="190" fill="url(#sdgs)"/><circle cx="600" cy="112" r="44" fill="#fff3c0"/>
+      ${ridge(118, 7, 0.012, 0.03, 1, '#8a3a2a', 0.55)}<rect y="128" width="1200" height="72" fill="url(#sdg2)"/>
+      <g fill="#fff0b0" opacity=".6"><rect x="540" y="136" width="120" height="3"/><rect x="560" y="148" width="80" height="3"/><rect x="574" y="160" width="52" height="3"/></g>
+      ${L}${R}
+      <path d="M0 200V170Q60 160 140 168T330 164V200Z" fill="#3a1608"/><path d="M880 200V168Q980 158 1060 166T1200 160V200Z" fill="#3a1608"/>
+      <g transform="translate(930 160) scale(-1 1)" fill="#1a0a04"><ellipse cx="0" cy="0" rx="30" ry="12"/><circle cx="32" cy="-6" r="9"/><path d="M28-14l3-8 5 7zM38-14l5-7 2 8z"/><rect x="-24" y="4" width="6" height="16"/><rect x="-8" y="6" width="6" height="14"/><rect x="12" y="6" width="6" height="14"/><rect x="24" y="4" width="6" height="16"/><path d="M-30-2Q-52-10-46-30" stroke="#1a0a04" stroke-width="5" fill="none" stroke-linecap="round"/></g>
+      <g transform="translate(930 160) scale(-1 1)" stroke="#ff9a2e" stroke-width="2" fill="none" opacity=".8"><path d="M-14-10l4 9M-2-11l3 10M10-10l2 9"/></g>
+      <path d="M470 60q8-7 16 0q8-7 16 0M720 40q6-5 12 0q6-5 12 0M300 52q6-5 12 0q6-5 12 0" stroke="#3a1608" fill="none" stroke-width="2" stroke-linecap="round"/>`;
+    },
+    stmartin: () => {
+      return `<defs>${grad('smg1', [[0, '#ffd0a0'], [0.55, '#ffe9c8'], [1, '#bff0ff']])}${grad('smg2', [[0, '#27e6d0'], [0.6, '#1aa6d8'], [1, '#0f5aa8']])}${glow('smgs', '#fff3b0')}</defs>
+      <rect width="1200" height="200" fill="url(#smg1)"/><circle cx="880" cy="62" r="110" fill="url(#smgs)"/><circle cx="880" cy="62" r="26" fill="#fff8d0"/>
+      <g fill="#fff" opacity=".9"><ellipse cx="200" cy="40" rx="70" ry="13"/><ellipse cx="170" cy="32" rx="34" ry="12"/><ellipse cx="560" cy="58" rx="60" ry="11"/></g>
+      <rect y="104" width="1200" height="96" fill="url(#smg2)"/>
+      <g stroke="#fff" stroke-width="2" fill="none" opacity=".6"><path d="M0 120q60-8 120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0"/><path d="M-40 136q60-8 120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0"/></g>
+      <path d="M700 108Q820 100 940 108T1200 106V112H700Z" fill="#fff" opacity=".5"/>
+      <path d="M0 200V156Q150 140 330 160T640 170T1000 168T1200 160V200Z" fill="#f6dca0"/><path d="M0 200V178Q200 168 420 180T820 178T1200 176V200Z" fill="#e9c783"/>
+      <g fill="#3a3a4a"><ellipse cx="720" cy="170" rx="34" ry="14"/><ellipse cx="760" cy="166" rx="20" ry="12"/></g><g fill="#fff" opacity=".85"><ellipse cx="690" cy="178" rx="26" ry="4"/><ellipse cx="770" cy="176" rx="18" ry="3.5"/></g>
+      ${palm(150, 168, 118, 0.1, '#2a2a3a')}${palm(230, 172, 96, -0.1, '#2a2a3a')}${palm(1030, 170, 124, -0.1, '#2a2a3a')}${palm(1120, 176, 100, 0.1, '#2a2a3a')}
+      <path d="M420 60q8-7 16 0q8-7 16 0M640 84q6-5 12 0q6-5 12 0" stroke="#4a4a6a" fill="none" stroke-width="2" stroke-linecap="round"/>`;
+    },
     monsoon: () => {
       let r = '', p = '';
       for (let i = 0; i < 70; i++) { const x = (i * 19) % 1200 + rnd() * 10, y = 40 + (i * 37) % 100; r += `<path d="M${x} ${y}l-6 16"/>`; }
@@ -94,11 +121,13 @@
   };
   const NAMES = {
     mangrove: ['সুন্দরবন', 'Sundarbans'], tea: ['শ্রীমঙ্গলের চা-বাগান', 'Sreemangal tea gardens'], sea: ['কক্সবাজার সমুদ্রসৈকত', "Cox's Bazar beach"],
-    lake: ['কাপ্তাই হ্রদ, রাঙামাটি', 'Kaptai Lake, Rangamati'], shapla: ['শাপলার বিল', 'Shapla beel'], kash: ['শরতের কাশবন', 'Autumn kash fields'], monsoon: ['বর্ষার ধানক্ষেত', 'Monsoon paddy fields']
+    lake: ['কাপ্তাই হ্রদ, রাঙামাটি', 'Kaptai Lake, Rangamati'], shapla: ['শাপলার বিল', 'Shapla beel'], kash: ['শরতের কাশবন', 'Autumn kash fields'], monsoon: ['বর্ষার ধানক্ষেত', 'Monsoon paddy fields'], sundarban: ['সুন্দরবনের ভোর', 'Dawn in the Sundarbans'], stmartin: ['সেন্ট মার্টিন দ্বীপ', "St Martin's Island"]
   };
-  const MAP = { arena: 'mangrove', live: 'tea', scan: 'sea', voice: 'lake', lookalike: 'shapla', secret: 'kash', audit: 'mangrove', shield: 'kash', triage: 'monsoon', alerts: 'monsoon', spot: 'lake', library: 'tea', pause: 'shapla', cert: 'sea', me: 'kash', offline: 'lake', card: 'shapla', sos: 'monsoon', family: 'kash', tour: null, play: null, home: null };
+  const MAP = { arena: 'sundarban', live: 'tea', scan: 'sea', voice: 'lake', lookalike: 'shapla', secret: 'kash', audit: 'stmartin', shield: 'kash', triage: 'monsoon', alerts: 'monsoon', spot: 'lake', library: 'tea', pause: 'shapla', cert: 'sea', me: 'kash', offline: 'lake', card: 'shapla', sos: 'monsoon', family: 'kash', tour: null, play: null, home: null };
   const KEYS = Object.keys(SCENES);
   SG.sceneKey = (name) => (name in MAP ? MAP[name] : KEYS[(name.split('').reduce((a, c) => a + c.charCodeAt(0), 0)) % KEYS.length]);
+  SG.sceneBg = (key) => `<svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true">${SCENES[key]()}</svg>`;
+  SG.sceneName = (key, en) => NAMES[key][en ? 1 : 0];
   SG.scene = function (name, en) {
     const key = SG.sceneKey(name); if (!key) return '';
     const cap = NAMES[key][en ? 1 : 0];
