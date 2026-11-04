@@ -757,3 +757,35 @@ html:not([data-theme=night]) .hero{background:radial-gradient(620px 320px at 88%
 .lv-chat .phone .btn.pri{background:var(--vg,linear-gradient(135deg,#1ff2c4,#2fa8ff));color:#04122a;border:0;font-weight:800}
 @media(max-width:560px){.lv-hero{flex-direction:column;text-align:center;padding:20px}.lv-orb{width:88px;height:88px}}
 @media(prefers-reduced-motion:reduce){.lv-orb i,.lv-badge i{animation:none}}
+
+/* =========================================================
+   কমলা উচ্চারণ + পেজভিত্তিক দৃশ্য + নতুন রোবট
+   ========================================================= */
+html[data-theme=night]{--note:#ff9a2e;--note2:#ffc27a;--gold:#ffd25a;--vg:linear-gradient(135deg,#ffd25a 0%,#ff8a1f 52%,#ff4d5a 100%)}
+html[data-theme=night] .btn.pri,html[data-theme=night] .hero .btn.pri,.lv-chat .phone .btn.pri{background:var(--vg);color:#2a1200;font-weight:800;border:0;box-shadow:0 14px 30px -12px rgba(255,138,31,.85)}
+html[data-theme=night] .hero{background:radial-gradient(760px 460px at 98% -14%,rgba(255,150,40,.9),transparent 62%),radial-gradient(640px 440px at -8% 118%,rgba(255,110,70,.7),transparent 62%),radial-gradient(560px 340px at 56% 130%,rgba(255,214,90,.6),transparent 65%),linear-gradient(160deg,#2a2f9c 0%,#1a2478 55%,#10185c 100%)}
+html[data-theme=night] .hero-in h1{background:linear-gradient(180deg,#fff,#ffe9c6 62%,#ffc27a);-webkit-background-clip:text;background-clip:text;color:transparent}
+html[data-theme=night] .cc.dark{background:linear-gradient(150deg,#ffa12e,#ff6a1f 55%,#e23a5a)}
+html[data-theme=night] .cc.dark h3,html[data-theme=night] .cc.dark p,html[data-theme=night] .cc.dark b{color:#fff}
+html[data-theme=night] .cc b{color:#ffb35a}
+html[data-theme=night] body{background-image:radial-gradient(900px 560px at 85% -8%,rgba(139,92,255,.42),transparent 62%),radial-gradient(760px 560px at 0% 22%,rgba(255,138,31,.2),transparent 60%),radial-gradient(800px 560px at 55% 112%,rgba(255,92,147,.24),transparent 62%),linear-gradient(180deg,#0b1340,#101a58 60%,#0d1448)}
+html[data-theme=night] .tile:hover,html[data-theme=night] .sc:hover{border-color:#ff9a2e;box-shadow:0 18px 36px -18px rgba(255,138,31,.55)}
+html[data-theme=night] .ti,html[data-theme=night] .cc .ci{background:linear-gradient(145deg,rgba(255,170,60,.3),rgba(255,92,90,.22));border:1px solid rgba(255,190,110,.4)}
+.lv-hero{background:radial-gradient(420px 240px at 100% 0,rgba(255,92,147,.5),transparent 65%),radial-gradient(420px 260px at 0 100%,rgba(255,210,90,.5),transparent 65%),linear-gradient(150deg,#ff9a2e,#ff6a1f 55%,#d93a6a)}
+.lv-hero p{color:#fff4e4}.lv-hero .pill{background:rgba(0,0,0,.22)}
+.lv-orb{background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.95),rgba(255,236,200,.9) 55%,rgba(255,190,110,.85));box-shadow:0 0 44px rgba(255,210,90,.8),0 0 90px rgba(255,92,90,.55);width:118px;height:118px}
+.lv-orb i{border-color:rgba(255,255,255,.7)}
+.lv-bot{position:relative;z-index:1;width:84%;display:block}.lv-bot svg{width:100%;height:auto;display:block;filter:drop-shadow(0 6px 8px rgba(120,40,0,.35))}
+.lv-chat .ph-top{background:linear-gradient(135deg,#ff9a2e,#ff6a1f 60%,#e23a5a)}
+.lv-chat .ph-top small{color:#fff0dc}
+.lv-chat .b.me{background:linear-gradient(135deg,#ffd25a,#ff9a2e);color:#2a1200}
+.lv-chat .guard .seg i.on{background:linear-gradient(90deg,#ffd25a,#ff8a1f)}
+.lv-chat .inp input:focus{border-color:#ff9a2e;box-shadow:0 0 0 3px rgba(255,154,46,.3)}
+.cc .ca{width:124px}
+/* পেজের দৃশ্য */
+.pgscene{position:relative;height:150px;margin:0 0 16px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.22);box-shadow:0 22px 44px -26px rgba(0,0,0,.7)}
+.pgscene svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pgcap{position:absolute;left:12px;bottom:10px;font-size:.78rem;font-weight:600;padding:3px 11px;border-radius:99px;color:#fff;background:rgba(0,0,0,.38);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.pgscene .sc-ref rect{fill:#fff}
+@media(max-width:640px){.pgscene{height:112px;border-radius:14px}}
+@media(min-width:1100px){.pgscene{height:170px}}
