@@ -670,3 +670,26 @@ html[data-theme=night] .tile.sos .ti{background:rgba(255,93,126,.25)}
 html[data-theme=night] .sms{color:var(--ink)}
 html[data-theme=night] .serial{color:var(--mut)}
 html[data-theme=night] .stars .o{color:rgba(255,255,255,.18)}
+
+/* ---------- বাংলাদেশের দৃশ্য (আলাদা ব্যান্ড) ---------- */
+.landband{--ls0:#0e3b3a;--ls1:#2f6b55;--ls2:#e0a45a;--lr1:#9a8a4a;--lr2:#0a2a2a;--lfar:#1f5a46;--lmid:#144633;--lnear:#07241f;--lpalm:#06201b;--lboat:#030d0b;--lkash:#f4f1e2;
+  position:relative;overflow:hidden;height:300px;margin:26px 0 8px;border-radius:20px;background:var(--ls0);border:1px solid rgba(214,178,94,.35);box-shadow:0 30px 60px -34px rgba(0,0,0,.7)}
+html[data-theme=night] .landband{--ls0:#0a1233;--ls1:#3b2f7a;--ls2:#f0955a;--lr1:#7a6a90;--lr2:#0a1233;--lfar:#1b2f66;--lmid:#112452;--lnear:#091634;--lpalm:#070f2a;--lboat:#030816;--lkash:#e6edff;border-color:rgba(140,165,255,.3)}
+.landband>svg{position:absolute;left:50%;bottom:0;width:100%;max-width:none;height:auto;aspect-ratio:1200/262;transform:translateX(-50%);display:block}
+.lb-txt{position:absolute;left:26px;top:22px;right:26px;z-index:2;max-width:520px}
+.lb-txt h2{font-size:clamp(1.15rem,3.2vw,1.7rem);line-height:1.35;font-weight:800;color:#fff;margin:0 0 4px;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.lb-txt p{color:#f4e9d4;font-size:.98rem;margin:0;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.landband .lfar{fill:var(--lfar)}.landband .lmid{fill:var(--lmid)}.landband .lnear{fill:var(--lnear)}
+.landband .lt,.landband .lf{fill:none;stroke:var(--lpalm);stroke-linecap:round}
+.landband .lpaddy{stroke:rgba(150,220,130,.25)}
+.landband .lref rect{fill:#ffd58a;opacity:.6}
+.landband .lbird{stroke:var(--lboat);opacity:.75}
+.landband .lbs{fill:rgba(0,0,0,.35)}
+.landband .lhull,.landband .lroof,.landband .lsail{fill:var(--lboat)}
+.landband .lmast{stroke:var(--lboat)}
+.landband .lk path{fill:none;stroke:var(--lkash);stroke-width:1.6;opacity:.75;stroke-linecap:round}
+.landband .lk ellipse{fill:var(--lkash);opacity:.9}
+.landband .lboat{animation:lbob 7s ease-in-out infinite}
+@keyframes lbob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@media(prefers-reduced-motion:reduce){.landband .lboat{animation:none}}
+@media(max-width:700px){.landband{height:280px}.landband>svg{width:820px}}

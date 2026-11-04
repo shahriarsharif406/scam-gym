@@ -153,7 +153,54 @@
   /* =========================================================
      HOME
   ========================================================= */
+  /* বাংলাদেশের গ্রামীণ দৃশ্য: নদী, নৌকা, তালগাছ, কাশফুল, সূর্যাস্ত (নিজের আঁকা SVG) */
+  function landscape() {
+    const palm = (x, y, h, lean, s) => {
+      const tx = x + lean * h, ty = y - h;
+      let f = '';
+      [[-40, -30, -84, 26], [-31, -34, -62, 8], [-20, -34, -40, -6], [-9, -32, -17, -22], [40, -30, 84, 26], [31, -34, 62, 8], [20, -34, 40, -6], [9, -32, 17, -22], [0, -34, 0, -26]].forEach(a => {
+        f += `<path d="M${tx} ${ty}q${a[0] * s} ${a[1] * s} ${a[2] * s} ${a[3] * s}" />`;
+      });
+      return `<g class="lp"><path class="lt" d="M${x} ${y}Q${x + lean * h * .15} ${y - h * .55} ${tx} ${ty}" stroke-width="${5 * s}"/><g class="lf" stroke-width="${3.4 * s}">${f}</g></g>`;
+    };
+    const kash = (x, y, h, k) => `<g class="lk"><path d="M${x} ${y}q${k} ${-h * .5} ${k * 1.6} ${-h}" /><ellipse cx="${x + k * 1.6}" cy="${y - h - 6}" rx="4.5" ry="13" transform="rotate(${k * 3} ${x + k * 1.6} ${y - h})"/></g>`;
+    let paddy = '';
+    for (let i = 0; i < 7; i++) paddy += `<path d="M0 ${148 + i * 5}Q300 ${144 + i * 5} 560 ${150 + i * 5}" />`;
+    let ref = '';
+    [0, 1, 2, 3, 4, 5].forEach(i => ref += `<rect x="${700 - 54 + i * 6}" y="${166 + i * 12}" width="${108 - i * 12}" height="2.2" rx="1.1"/>`);
+    let kashes = '';
+    [[40, 262, 70, 6], [64, 262, 52, -4], [92, 262, 84, 8], [1090, 262, 76, -7], [1118, 262, 56, 4], [1148, 262, 88, -9], [1172, 262, 60, 3], [140, 262, 46, 5]].forEach(a => kashes += kash(...a));
+    return `<svg viewBox="0 0 1200 262" preserveAspectRatio="xMidYMax meet" focusable="false" style="overflow:visible">
+      <defs>
+        <radialGradient id="lsun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".95"/><stop offset=".35" stop-color="#ffb35c" stop-opacity=".45"/><stop offset="1" stop-color="#ff8a4c" stop-opacity="0"/></radialGradient>
+        <linearGradient id="lskyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--ls0)"/><stop offset=".6" stop-color="var(--ls1)"/><stop offset="1" stop-color="var(--ls2)"/></linearGradient>
+        <linearGradient id="lriv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--lr1)"/><stop offset="1" stop-color="var(--lr2)"/></linearGradient>
+      </defs>
+      <rect x="-400" y="-260" width="2000" height="406" fill="url(#lskyg)"/>
+      <circle cx="700" cy="138" r="150" fill="url(#lsun)"/>
+      <circle cx="700" cy="138" r="30" fill="#ffe3a0"/>
+      <g class="lbird" fill="none" stroke-width="2" stroke-linecap="round"><path d="M560 56q9-9 18 0q9-9 18 0"/><path d="M620 84q7-7 14 0q7-7 14 0"/><path d="M520 98q6-6 12 0q6-6 12 0"/></g>
+      <path class="lfar" d="M0 146Q70 128 140 142T300 138T470 144T640 136T820 142T1010 134T1200 142V170H0Z"/>
+      <rect x="0" y="146" width="1200" height="120" fill="url(#lriv)"/>
+      <g class="lref">${ref}</g>
+      <g class="lpaddy" fill="none" stroke-width="1.4">${paddy}</g>
+      <path class="lmid" d="M0 150Q90 140 200 148T340 156Q372 172 336 192Q180 202 0 206Z"/>
+      ${palm(70, 176, 98, .16, 1)}${palm(150, 178, 82, -.12, .85)}${palm(236, 180, 70, .1, .7)}
+      <path class="lmid" d="M1200 156Q1100 150 1010 160Q935 168 900 192Q1000 214 1200 214Z"/>
+      ${palm(980, 180, 92, -.14, .95)}${palm(1060, 184, 108, .12, 1.08)}${palm(1130, 188, 78, -.1, .8)}
+      <g class="lboat">
+        <ellipse class="lbs" cx="470" cy="196" rx="92" ry="5"/>
+        <path class="lhull" d="M392 182Q402 202 468 204Q540 202 552 176Q522 190 470 190Q420 190 392 182Z"/>
+        <path class="lroof" d="M440 184Q440 158 470 156Q500 158 500 184Z"/>
+        <path class="lmast" d="M536 182L548 120" stroke-width="2.2" fill="none"/>
+        <path class="lsail" d="M548 124Q580 148 540 178Z"/>
+      </g>
+      <path class="lnear" d="M0 262V222Q200 206 420 226T820 220T1200 214V262Z"/>
+      ${kashes}
+    </svg>`;
+  }
   const ART = {
+    land: landscape(),
     arena: '<svg viewBox="0 0 120 130"><rect x="30" y="8" width="60" height="112" rx="12" fill="#101b45" stroke="#6f8cff" stroke-width="2"/><rect x="38" y="22" width="44" height="8" rx="4" fill="#2de2b4" opacity=".7"/><rect x="38" y="40" width="44" height="22" rx="6" fill="#ff5d7e" opacity=".28"/><rect x="38" y="68" width="44" height="6" rx="3" fill="#6f8cff" opacity=".5"/><rect x="38" y="80" width="30" height="6" rx="3" fill="#6f8cff" opacity=".35"/><circle cx="88" cy="98" r="15" fill="#ff3d63"/><path d="M88 90v10" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="88" cy="105" r="1.8" fill="#fff"/></svg>',
     ai: '<svg viewBox="0 0 120 130"><line x1="60" y1="14" x2="60" y2="28" stroke="#7df2d2" stroke-width="3"/><circle cx="60" cy="12" r="5" fill="#2de2b4"/><rect x="26" y="28" width="68" height="54" rx="22" fill="#eaf1ff"/><rect x="36" y="40" width="48" height="30" rx="14" fill="#0b1433"/><circle cx="50" cy="55" r="6" fill="#2de2e6"/><circle cx="70" cy="55" r="6" fill="#2de2e6"/><rect x="40" y="88" width="40" height="26" rx="12" fill="#cfdcff"/><rect x="14" y="44" width="8" height="22" rx="4" fill="#9fb4ff"/><rect x="98" y="44" width="8" height="22" rx="4" fill="#9fb4ff"/><path d="M92 96h22a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6h-10l-8 7v-7h-4a6 6 0 0 1-6-6v-8a6 6 0 0 1 6-6z" fill="#2de2b4"/></svg>',
     scan: '<svg viewBox="0 0 120 130"><rect x="22" y="14" width="64" height="84" rx="8" fill="#e9eeff"/><rect x="32" y="28" width="38" height="5" rx="2.5" fill="#8aa0e8"/><rect x="32" y="40" width="44" height="5" rx="2.5" fill="#b9c7f2"/><rect x="32" y="52" width="30" height="5" rx="2.5" fill="#b9c7f2"/><path d="M78 8l16 28H62z" fill="#ff3d63"/><path d="M78 18v8" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="78" cy="31" r="1.6" fill="#fff"/><circle cx="74" cy="84" r="20" fill="rgba(45,226,230,.18)" stroke="#2de2e6" stroke-width="5"/><path d="M89 99l18 18" stroke="#2de2e6" stroke-width="7" stroke-linecap="round"/></svg>',
@@ -218,6 +265,10 @@
       <a class="cc" href="#/live"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ca" aria-hidden="true">${ART.ai}</span><span class="ci">🤖</span><h3>${L('লাইভ AI', 'Live AI')}</h3><p>${L('AI নিজে প্রতারক সাজে। যা খুশি লিখুন, প্রতিটি উত্তরের নিরাপত্তা যাচাই হবে।', 'The AI plays the scammer. Type anything and each reply is graded for safety.')}</p><b>${L('AI-এর মুখোমুখি হন', 'Face the AI')} ›</b></a>
       <a class="cc" href="#/scan"><span class="cw" aria-hidden="true">${rosette({ n: 26, rx: 46, ry: 14, sw: 0.5 })}</span><span class="ca" aria-hidden="true">${ART.scan}</span><span class="ci">🔎</span><h3>${L('স্ক্যানার', 'Scanner')}</h3><p>${L('সন্দেহজনক মেসেজ বা লিংক দিন। কী সন্দেহজনক, কী যাচাই হয়নি, এখন কী করবেন সব দেখুন।', 'Paste a suspicious message or link. See what looks wrong, what could not be checked, and what to do next.')}</p><b>${L('মেসেজ যাচাই করুন', 'Check a message')} ›</b></a>
     </div>
+    <section class="landband" aria-label="${L('বাংলাদেশ', 'Bangladesh')}">
+      ${ART.land}
+      <div class="lb-txt"><h2>${L('সোনার বাংলা, প্রতারণামুক্ত থাকুক', 'A Bangladesh free of scams')}</h2><p>${L('গ্রাম থেকে শহর, প্রতিটি পরিবার জানুক কীভাবে থামতে হয়।', 'From village to city, every family should know when to stop.')}</p></div>
+    </section>
     <h2 class="sec">${L('আরও টুল', 'More tools')}</h2>
     <div class="tiles">
       ${T('#/voice', '🎙️', L('ভয়েস কল সিমুলেশন', 'Voice call simulator'), L('প্রতারক ফোনে কথা বলবে, আপনিও মুখে উত্তর দিন।', 'The scammer speaks on a call. Answer out loud.'), 'new')}
