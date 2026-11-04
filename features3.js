@@ -7,7 +7,7 @@
   SG.exts.push(function (c) {
     const { VIEWS, $, esc, L, tx, toast, save, FAST } = c;
     const st = () => c.S;
-    const CACHE = 'scamgym-v14';
+    const CACHE = 'scamgym-v15';
     let deferred = null;
     window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferred = e; });
     window.addEventListener('appinstalled', () => { deferred = null; toast(L('অ্যাপ ইনস্টল হয়েছে', 'App installed')); });
@@ -48,7 +48,7 @@
     const themeBtn = $('#themeBtn'); const curTheme = () => document.documentElement.getAttribute('data-theme') || 'night';
     const paintTheme = () => {
       if (themeBtn) { const n = curTheme() === 'night'; themeBtn.innerHTML = n ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3 7 7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"/></svg>' : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></svg>'; themeBtn.setAttribute('aria-label', n ? L('হালকা থিমে যান', 'Switch to light theme') : L('গাঢ় থিমে যান', 'Switch to night theme')); themeBtn.title = themeBtn.getAttribute('aria-label'); }
-      const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = curTheme() === 'night' ? '#050a1c' : '#051516';
+      const m = document.querySelector('meta[name=theme-color]'); if (m) m.content = curTheme() === 'night' ? '#0e0a33' : '#051516';
     };
     if (themeBtn) themeBtn.addEventListener('click', () => { const n = curTheme() === 'night' ? 'light' : 'night'; document.documentElement.setAttribute('data-theme', n); try { localStorage.setItem('sg.theme', n); } catch (e) { /* ignore */ } paintTheme(); });
     paintTheme();

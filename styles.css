@@ -861,3 +861,66 @@ html[data-theme=night] .cc .ci.ci-bot{background:rgba(255,255,255,.18)}
 .au-item>div{flex:1;min-width:0}
 @media(max-width:560px){.pgh-in{padding:20px 16px}.au-in{gap:14px}.pghero{min-height:0}}
 .pghero .pgcap{left:auto;right:12px;bottom:10px;z-index:3}
+
+/* =========================================================
+   AURORA: ইন্ডিগো + ভায়োলেট + সিয়ান (আন্তর্জাতিক মানের স্মার্ট প্যালেট)
+   ========================================================= */
+html[data-theme=night]{--paper:#0e0a33;--paper2:#1a1452;--ink:#f6f4ff;--ink2:#ddd7ff;--mut:#b6aef2;--note:#a78bfa;--note2:#c4b5fd;--mint:#2a1f78;--stamp:#fb7185;--gold:#fbbf24;--line:rgba(167,139,250,.24);--line2:rgba(167,139,250,.42);--inkbg:#0a0726;--onink:#f6f4ff;--ok:#34d399;--warn:#fbbf24;
+  --vg:linear-gradient(135deg,#8b5cf6 0%,#3b82f6 55%,#22d3ee 100%);
+  --sh1:0 1px 0 rgba(255,255,255,.08) inset,0 20px 40px -24px rgba(5,2,30,.9);--sh2:0 1px 0 rgba(255,255,255,.1) inset,0 28px 54px -22px rgba(5,2,30,.95),0 0 0 1px rgba(139,92,246,.45)}
+html[data-theme=night],html[data-theme=night] body{background-color:#0e0a33}
+html[data-theme=night] body{background-image:radial-gradient(900px 620px at 92% -10%,rgba(139,92,246,.6),transparent 62%),radial-gradient(820px 620px at -4% 24%,rgba(34,211,238,.26),transparent 60%),radial-gradient(820px 560px at 58% 116%,rgba(244,114,182,.28),transparent 62%),linear-gradient(180deg,#171050 0%,#0e0a33 55%,#0a0726 100%)}
+html[data-theme=night] .top{background:rgba(14,10,51,.82);border-bottom:1px solid rgba(167,139,250,.28)}
+html[data-theme=night] .foot{background:rgba(14,10,51,.72);border-color:rgba(167,139,250,.26);color:#c4bdf5}
+html[data-theme=night] .bnav{background:rgba(14,10,51,.94);border:1px solid rgba(167,139,250,.35)}
+html[data-theme=night] .side{background:linear-gradient(180deg,rgba(30,20,100,.94),rgba(16,10,62,.94));border-right:1px solid rgba(167,139,250,.26)}
+html[data-theme=night] .dnav .on,html[data-theme=night] .bnav .on{background:linear-gradient(135deg,#8b5cf6,#3b82f6);color:#fff}
+html[data-theme=night] .side .on{background:linear-gradient(90deg,rgba(139,92,246,.42),rgba(139,92,246,.06));box-shadow:inset 3px 0 0 #22d3ee}
+html[data-theme=night] .dnav a:hover,html[data-theme=night] .dnav button:hover{background:rgba(167,139,250,.16)}
+html[data-theme=night] .card,html[data-theme=night] .tile,html[data-theme=night] .sc,html[data-theme=night] .cc:not(.dark),html[data-theme=night] .facts,html[data-theme=night] .tip{background:linear-gradient(160deg,rgba(139,92,246,.2),rgba(20,14,72,.82));border-color:rgba(167,139,250,.36)}
+html[data-theme=night] .tile:hover,html[data-theme=night] .sc:hover{border-color:#22d3ee;box-shadow:0 18px 36px -18px rgba(34,211,238,.5)}
+html[data-theme=night] .facts b{background:linear-gradient(135deg,#c4b5fd,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+html[data-theme=night] .btn.pri,html[data-theme=night] .hero .btn.pri,.lv-chat .phone .btn.pri{background:var(--vg);color:#fff;font-weight:800;border:0;box-shadow:0 14px 30px -12px rgba(59,130,246,.85)}
+html[data-theme=night] .hero{background:radial-gradient(700px 440px at 98% -14%,rgba(34,211,238,.6),transparent 62%),radial-gradient(640px 440px at -8% 118%,rgba(244,114,182,.5),transparent 62%),linear-gradient(160deg,#5b3df0 0%,#3a2bc4 50%,#1c1670 100%);border:1px solid rgba(196,181,253,.5);box-shadow:0 40px 70px -34px rgba(20,8,100,.85)}
+html[data-theme=night] .hero-in h1{text-shadow:0 2px 22px rgba(20,8,100,.5)}
+html[data-theme=night] .hero p,html[data-theme=night] .hero .tagline{color:#ece8ff}
+html[data-theme=night] .hero .btn:not(.pri){background:rgba(14,10,51,.35);border:1px solid rgba(221,215,255,.55);color:#fff}
+html[data-theme=night] .cc.dark{background:linear-gradient(150deg,#7c4dff,#3b6cf0 60%,#16b6d6)}
+html[data-theme=night] .cc b{color:#a5b4fc}
+html[data-theme=night] .landband{--ls0:#1b1260;--ls1:#8b5cf6;--ls2:#fb9a85;--lfar:#3a2f9a;--lmid:#2a2178;--lnear:#150f4a;--lpalm:#0d0830;--lboat:#070420;--lr1:#7a6ad0;--lr2:#1a1260;border-color:rgba(167,139,250,.4)}
+html[data-theme=night] .pgscene{border-color:rgba(196,181,253,.4)}
+html[data-theme=night] input,html[data-theme=night] textarea,html[data-theme=night] .field{background:rgba(10,7,38,.5);border-color:rgba(167,139,250,.45);color:#fff}
+html[data-theme=night] .pill{background:rgba(139,92,246,.2);border-color:rgba(167,139,250,.5);color:#ece8ff}
+html[data-theme=night] .pill.acc{background:linear-gradient(135deg,#8b5cf6,#3b82f6);color:#fff;border-color:transparent}
+html[data-theme=night] .ti,html[data-theme=night] .cc .ci{background:linear-gradient(145deg,rgba(139,92,246,.35),rgba(34,211,238,.2));border:1px solid rgba(196,181,253,.4)}
+html[data-theme=night] .cc .ci.ci-bot{background:rgba(255,255,255,.14)}
+.lv-card .ico,.ar-card .ico{background:rgba(139,92,246,.24)}
+.lv-chat .phone,html[data-theme=night] .phone{border-color:rgba(196,181,253,.45);box-shadow:0 30px 60px -28px rgba(10,4,60,.9)}
+.lv-hero{background:radial-gradient(420px 240px at 100% 0,rgba(34,211,238,.5),transparent 65%),radial-gradient(420px 260px at 0 100%,rgba(244,114,182,.5),transparent 65%),linear-gradient(150deg,#6d45f3,#3b6cf0 60%,#1d3fb8);border-color:rgba(221,215,255,.5)}
+.lv-hero p{color:#ece8ff}.lv-hero .pill{background:rgba(10,7,38,.35)}
+.lv-orb{background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.95),rgba(226,220,255,.92) 55%,rgba(167,139,250,.85));box-shadow:0 0 44px rgba(34,211,238,.7),0 0 90px rgba(139,92,246,.6)}
+.lv-bot svg{filter:drop-shadow(0 6px 8px rgba(30,10,100,.4))}
+.lv-chat .ph-top{background:linear-gradient(135deg,#7c4dff,#3b6cf0 60%,#16b6d6)}
+.lv-chat .ph-top small{color:#e6e1ff}
+.lv-chat .b.me{background:linear-gradient(135deg,#8b5cf6,#3b82f6);color:#fff}
+.lv-chat .b.them.scam{background:linear-gradient(135deg,rgba(251,113,133,.3),rgba(244,114,182,.2));border:1px solid rgba(251,113,133,.5)}
+.lv-chat .guard .seg i.on{background:linear-gradient(90deg,#22d3ee,#8b5cf6)}
+.lv-chat .guard .seg i.on.low{background:linear-gradient(90deg,#fb7185,#f472b6)}
+.lv-chat .inp input:focus{border-color:#22d3ee;box-shadow:0 0 0 3px rgba(34,211,238,.28)}
+.lv-chat .chat{background:radial-gradient(420px 260px at 100% 0,rgba(139,92,246,.2),transparent 70%),radial-gradient(420px 260px at 0 100%,rgba(34,211,238,.12),transparent 70%)}
+.lv-c0{--lc:#22d3ee}.lv-c1{--lc:#fbbf24}.lv-c2{--lc:#f472b6}.lv-c3{--lc:#a78bfa}.lv-c4{--lc:#fb7185}
+.pghero{border-color:rgba(196,181,253,.5);box-shadow:0 30px 60px -30px rgba(10,4,60,.9)}
+.pghero .pgscene::after{background:linear-gradient(90deg,rgba(10,6,50,.78),rgba(10,6,50,.32) 55%,rgba(10,6,50,.05))}
+.pgh-in p{color:#ece8ff}
+.pgh-stats span{background:rgba(10,7,38,.5);border-color:rgba(196,181,253,.45);color:#ddd7ff}
+.pgh-stats b{color:#67e8f9}
+.ar-live .ico.ar-bot{background:rgba(139,92,246,.3);box-shadow:0 0 0 2px rgba(196,181,253,.7) inset}
+.ar-card::before{background:#34d399}.ar-l2::before{background:#a78bfa}.ar-l3::before{background:#fb7185}
+.ar-go{color:#22d3ee}
+.au-score{background:rgba(10,7,38,.55);border-color:rgba(196,181,253,.5)}
+.au-ring .v span{color:#ddd7ff}
+.au-item{background:linear-gradient(160deg,rgba(139,92,246,.2),rgba(20,14,72,.82));border-color:rgba(167,139,250,.36)}
+.au-item:hover{border-color:#22d3ee;box-shadow:0 14px 28px -16px rgba(34,211,238,.5)}
+.au-item:has(input:checked){border-color:#34d399;background:linear-gradient(160deg,rgba(52,211,153,.2),rgba(14,30,60,.8))}
+.au-ic{background:rgba(139,92,246,.28)}
+.au-item input{accent-color:#8b5cf6}
