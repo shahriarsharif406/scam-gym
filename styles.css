@@ -693,3 +693,67 @@ html[data-theme=night] .landband{--ls0:#0a1233;--ls1:#3b2f7a;--ls2:#f0955a;--lr1
 @keyframes lbob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 @media(prefers-reduced-motion:reduce){.landband .lboat{animation:none}}
 @media(max-width:700px){.landband{height:280px}.landband>svg{width:820px}}
+
+/* =========================================================
+   VIVID: উজ্জ্বল ও প্রাণবন্ত রঙ + লাইভ AI পেজ
+   ========================================================= */
+html[data-theme=night]{--paper:#0b1340;--paper2:#141e5c;--ink:#f2f6ff;--ink2:#cdd8ff;--mut:#a4b3e8;--note:#1ff2c4;--note2:#8ff7de;--mint:#134a5a;--stamp:#ff5c93;--gold:#ffd166;--line:rgba(150,175,255,.2);--line2:rgba(150,175,255,.36);--inkbg:#0a1246;--ok:#35e8a0;--warn:#ffc547;
+  --vg:linear-gradient(135deg,#1ff2c4 0%,#2fa8ff 55%,#8b5cff 100%);--vg2:linear-gradient(135deg,#ff5c93,#ff9a4d)}
+html[data-theme=night],html[data-theme=night] body{background-color:#0b1340}
+html[data-theme=night] body{background-image:radial-gradient(900px 560px at 85% -8%,rgba(139,92,255,.5),transparent 62%),radial-gradient(760px 560px at 0% 22%,rgba(0,214,255,.26),transparent 60%),radial-gradient(800px 560px at 55% 112%,rgba(255,92,147,.26),transparent 62%),linear-gradient(180deg,#0b1340,#101a58 60%,#0d1448)}
+html[data-theme=night] .hero{background:radial-gradient(640px 360px at 92% -8%,rgba(139,92,255,.75),transparent 62%),radial-gradient(560px 380px at -6% 112%,rgba(31,242,196,.45),transparent 62%),radial-gradient(520px 320px at 62% 124%,rgba(255,92,147,.42),transparent 65%),linear-gradient(160deg,#1a2a8a 0%,#14206e 55%,#0e1654 100%);border-color:rgba(170,190,255,.4)}
+html[data-theme=night] .btn.pri,html[data-theme=night] .hero .btn.pri{background:var(--vg);color:#04122a;font-weight:800;box-shadow:0 14px 30px -12px rgba(47,168,255,.8)}
+html[data-theme=night] .hero-in h1{background:linear-gradient(180deg,#fff,#d9e4ff 60%,#9fe9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+html[data-theme=night] .facts b{background:var(--vg);-webkit-background-clip:text;background-clip:text;color:transparent}
+html[data-theme=night] .card,html[data-theme=night] .tile,html[data-theme=night] .sc,html[data-theme=night] .cc:not(.dark),html[data-theme=night] .facts,html[data-theme=night] .tip{background:linear-gradient(160deg,rgba(40,56,150,.62),rgba(22,32,102,.72));border-color:rgba(160,185,255,.34)}
+html[data-theme=night] .tile:hover,html[data-theme=night] .sc:hover{border-color:#2fe6c4;box-shadow:0 18px 36px -18px rgba(31,242,196,.5)}
+html[data-theme=night] .cc.dark{background:linear-gradient(150deg,#6a3df0,#2a56e8 60%,#18b6d9)}
+html[data-theme=night] .sec{color:#fff}
+html[data-theme=night] .side{background:linear-gradient(180deg,rgba(18,28,96,.92),rgba(12,20,74,.92))}
+html[data-theme=night] .landband{--ls0:#1a2a8a;--ls1:#7a45e0;--ls2:#ffae5c}
+/* vault: একটু উজ্জ্বল */
+html:not([data-theme=night]) .hero{background:radial-gradient(620px 320px at 88% -6%,rgba(255,206,110,.4),transparent 62%),radial-gradient(560px 360px at -4% 108%,rgba(40,210,160,.42),transparent 62%),linear-gradient(158deg,#16666a 0%,#0e4a4c 55%,#08302f 100%)}
+
+/* ---- লাইভ AI ---- */
+.lv-hero{display:flex;gap:22px;align-items:center;padding:24px;border-radius:20px;margin-bottom:18px;position:relative;overflow:hidden;color:#fff;
+  background:radial-gradient(420px 240px at 100% 0,rgba(255,92,147,.45),transparent 65%),radial-gradient(420px 260px at 0 100%,rgba(31,242,196,.4),transparent 65%),linear-gradient(150deg,#5a36e0,#2a4fe0 60%,#1596d6);border:1px solid rgba(190,205,255,.4);box-shadow:0 30px 60px -30px rgba(60,80,255,.7)}
+.lv-hero h1{font-size:clamp(1.5rem,5vw,2.2rem);line-height:1.3;font-weight:800;margin:0 0 6px;color:#fff}
+.lv-hero p{color:#eaf0ff;margin:0 0 12px;max-width:520px}
+.lv-hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff}
+.lv-orb{flex:none;width:104px;height:104px;border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 32% 28%,#fff,#9ff7e4 22%,#2fa8ff 60%,#6a3df0);box-shadow:0 0 44px rgba(31,242,196,.7),0 0 90px rgba(139,92,255,.6)}
+.lv-orb b{font:800 1.5rem var(--disp);color:#0a1246;letter-spacing:.04em;position:relative;z-index:1}
+.lv-orb i{position:absolute;inset:-10px;border-radius:50%;border:2px solid rgba(255,255,255,.55);animation:lvp 3.2s ease-out infinite}
+.lv-orb i:nth-child(2){animation-delay:1.05s}.lv-orb i:nth-child(3){animation-delay:2.1s}
+@keyframes lvp{0%{transform:scale(.86);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.lv-grid{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:760px){.lv-grid{grid-template-columns:1fr 1fr}}
+.lv-card{position:relative;align-items:center;border-radius:18px;padding:16px 16px 16px 14px;overflow:hidden}
+.lv-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--lc,#2fa8ff)}
+.lv-c0{--lc:#1ff2c4}.lv-c1{--lc:#ffc547}.lv-c2{--lc:#ff5c93}.lv-c3{--lc:#8b5cff}.lv-c4{--lc:#ff8a4c}
+.lv-card .ico{width:58px;height:58px;font-size:1.7rem;border:0;background:color-mix(in srgb,var(--lc) 26%,transparent);box-shadow:0 0 0 2px color-mix(in srgb,var(--lc) 70%,transparent) inset}
+.lv-b{flex:1;min-width:0}
+.lv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;align-items:center}
+.lv-tags span{font-size:.74rem;padding:2px 9px;border-radius:99px;background:color-mix(in srgb,var(--lc) 22%,transparent);border:1px solid color-mix(in srgb,var(--lc) 60%,transparent)}
+.lv-tags .lv-lvl{background:none;border:0;padding:0;letter-spacing:.12em;color:var(--lc);margin-left:auto}
+.lv-go{font-size:1.9rem;line-height:1;color:var(--lc);transition:transform .15s}
+.lv-card:hover .lv-go{transform:translateX(4px)}
+/* চ্যাট */
+.lv-chat .phone{border-radius:22px;border:1px solid rgba(160,185,255,.4);box-shadow:0 30px 60px -28px rgba(60,80,255,.7),0 0 0 1px rgba(255,255,255,.04) inset}
+.lv-chat .ph-top{background:linear-gradient(135deg,#5a36e0,#2a56e8 60%,#1596d6);border-bottom:0;color:#fff}
+.lv-chat .ph-top small{color:#dbe6ff}
+.lv-chat .ph-top .avatar{background:rgba(255,255,255,.2);box-shadow:0 0 0 2px rgba(255,255,255,.5) inset}
+.lv-badge{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font:800 .72rem var(--font);letter-spacing:.08em;padding:3px 10px;border-radius:99px;background:rgba(0,0,0,.28);color:#fff}
+.lv-badge i{width:8px;height:8px;border-radius:50%;background:#35ff9c;box-shadow:0 0 10px #35ff9c;animation:lvb 1.4s ease-in-out infinite}
+@keyframes lvb{50%{opacity:.35}}
+.lv-chat .guard .seg i.on{background:linear-gradient(90deg,#1ff2c4,#2fa8ff)}
+.lv-chat .guard .seg i.on.low{background:linear-gradient(90deg,#ff5c93,#ff9a4d)}
+.lv-chat .chat{background:radial-gradient(420px 260px at 100% 0,rgba(139,92,255,.18),transparent 70%),radial-gradient(420px 260px at 0 100%,rgba(31,242,196,.12),transparent 70%)}
+.lv-chat .b.them.scam{background:linear-gradient(135deg,rgba(255,92,147,.3),rgba(255,138,76,.22));border:1px solid rgba(255,140,170,.55);color:#fff}
+.lv-chat .b.me{background:linear-gradient(135deg,#1ff2c4,#2fa8ff);color:#04122a;font-weight:600}
+.lv-chat .coach.safe{background:rgba(53,232,160,.16);border-color:#35e8a0}
+.lv-chat .coach.risky{background:rgba(255,197,71,.16);border-color:#ffc547}
+.lv-chat .coach.fatal{background:rgba(255,92,147,.2);border-color:#ff5c93}
+.lv-chat .inp input{background:rgba(255,255,255,.1);border-color:rgba(190,205,255,.45);color:#fff}
+.lv-chat .phone .btn.pri{background:var(--vg,linear-gradient(135deg,#1ff2c4,#2fa8ff));color:#04122a;border:0;font-weight:800}
+@media(max-width:560px){.lv-hero{flex-direction:column;text-align:center;padding:20px}.lv-orb{width:88px;height:88px}}
+@media(prefers-reduced-motion:reduce){.lv-orb i,.lv-badge i{animation:none}}

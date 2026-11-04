@@ -442,10 +442,16 @@
   VIEWS.live = async function (pid) {
     if (!pid) {
       const ok = await aiStatus();
-      V.innerHTML = `<div class="play"><h1 style="font-size:1.8rem">🤖 লাইভ AI মোড</h1>
-        <p class="mut" style="margin:6px 0 14px">এখানে AI নিজে প্রতারক সাজে। আপনি যা খুশি লিখুন — সত্যিকারের কথোপকথনে কীভাবে টিকে থাকবেন, অনুশীলন করুন।</p>
-        <div class="notice" style="margin-bottom:14px">${ok ? '🟢 AI ইঞ্জিন চালু আছে।' : '🟡 AI সংযোগ নেই — অফলাইন ইঞ্জিনে চলবে (কম নমনীয়, কিন্তু কাজ করবে)।'} সব চরিত্র ও নম্বর কাল্পনিক।</div>
-        <div class="stack">${PERSONAS.map((p) => `<a class="sc" href="#/live/${p.id}"><div class="ico">${p.icon}</div><div><h3>${esc(p.n)}</h3><p class="sm mut">${esc(p.d)}</p></div></a>`).join('')}</div></div>`;
+      const TAGS = { bkash: [['জরুরি তাড়া', 'Urgency'], ['OTP চুরি', 'OTP theft']], job: [['রেজিস্ট্রেশন ফি', 'Upfront fee'], ['লোভ', 'Greed']], family: [['আবেগ', 'Emotion'], ['গোপনীয়তা', 'Secrecy']], invest: [['লোভ', 'Greed'], ['ভুয়া প্রমাণ', 'Fake proof']], authority: [['ভয়', 'Fear'], ['কর্তৃত্ব', 'Authority']] };
+      const LVL = { bkash: 2, job: 2, family: 3, invest: 2, authority: 3 };
+      V.innerHTML = `<div class="play lv">
+        <section class="lv-hero"><div class="lv-orb" aria-hidden="true"><i></i><i></i><i></i><b>AI</b></div>
+          <div class="lv-ht"><h1>${L('লাইভ AI মোড', 'Live AI mode')}</h1>
+          <p>${L('এখানে AI নিজে প্রতারক সাজে। আপনি যা খুশি লিখুন। সত্যিকারের কথোপকথনে কীভাবে টিকে থাকবেন, অনুশীলন করুন।', 'The AI plays the scammer. Type anything you like and practise surviving a real conversation.')}</p>
+          <span class="pill ${ok ? 'ok' : 'warn'} lv-st">${ok ? '🟢 ' + L('AI ইঞ্জিন চালু', 'AI engine online') : '🟡 ' + L('অফলাইন ইঞ্জিনে চলবে', 'Running on the offline engine')}</span></div></section>
+        <h2 class="sec">${L('কার মুখোমুখি হবেন?', 'Who will you face?')}</h2>
+        <div class="lv-grid">${PERSONAS.map((p, i) => `<a class="sc lv-card lv-c${i}" href="#/live/${p.id}"><div class="ico">${p.icon}</div><div class="lv-b"><h3>${esc(p.n)}</h3><p class="sm mut">${esc(p.d)}</p><div class="lv-tags">${(TAGS[p.id] || []).map((t) => `<span>${L(t[0], t[1])}</span>`).join('')}<span class="lv-lvl" title="${L('কঠিনতা', 'Difficulty')}">${'●'.repeat(LVL[p.id] || 2)}${'○'.repeat(3 - (LVL[p.id] || 2))}</span></div></div><span class="lv-go" aria-hidden="true">›</span></a>`).join('')}</div>
+        <p class="sm mut" style="margin-top:14px">${L('সব চরিত্র ও নম্বর কাল্পনিক।', 'All characters and numbers are fictional.')}</p></div>`;
       return;
     }
     const p = PERSONAS.find((x) => x.id === pid); if (!p) { location.hash = '#/live'; return; }
@@ -453,9 +459,9 @@
     const lines = p.lines || scen.steps.map((s) => s.msg);
     let ai = await aiStatus(); const hist = []; let guard = 100, safeN = 0, turns = 0, over = false, li = 0, busy = false;
     if (window.location.hash.indexOf('#/live/' + pid) !== 0) return; // রাউট বদলে গেছে
-    V.innerHTML = `<div class="play">
+    V.innerHTML = `<div class="play lv lv-chat">
       <div class="row sp" style="margin-bottom:10px"><a class="btn sm ghost" href="#/live">← বদলান</a><span class="pill ${ai ? 'ok' : 'warn'}" id="aip">${ai ? '🟢 AI চালু' : '🟡 অফলাইন ইঞ্জিন'}</span></div>
-      <div class="phone"><div class="ph-top ${scen && scen.ui === 'call' ? 'call' : ''}"><div class="avatar">${p.icon}</div><div><b>${esc(p.n)}</b><small>AI-চালিত সিমুলেশন · সব কাল্পনিক</small></div></div>
+      <div class="phone"><div class="ph-top ${scen && scen.ui === 'call' ? 'call' : ''}"><div class="avatar">${p.icon}</div><div><b>${esc(p.n)}</b><small>AI-চালিত সিমুলেশন · সব কাল্পনিক</small></div><span class="lv-badge"><i></i>LIVE</span></div>
       <div class="guard"><div class="row sp sm"><span>🛡️ আপনার সুরক্ষা</span><b id="gv">১০০%</b></div><div class="seg" id="seg"></div></div>
       <div class="chat" id="chat" role="log" aria-live="polite"></div>
       <form class="inp" id="f"><input id="t" autocomplete="off" placeholder="আপনার উত্তর লিখুন…" maxlength="300" aria-label="আপনার উত্তর"><button class="btn pri" id="sendb" type="submit">পাঠান</button></form>
