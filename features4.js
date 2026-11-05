@@ -6,6 +6,7 @@
 
   SG.exts.push(function (c) {
     const { VIEWS, $, esc, L, tx, toast, save, bn, waShare, copy, rankInfo } = c;
+    SG.tx = tx;
     const st = () => c.S;
     const V = () => c.V;
     const iq = () => (SG.iqOf ? SG.iqOf() : 40);
@@ -40,7 +41,7 @@
       x.fillStyle = '#fff'; x.font = '700 40px "Hind Siliguri",sans-serif'; x.fillText(L('আমার স্কোর ছাড়াতে পারবে?', 'Can you beat my score?'), 540, 1100);
       const sk = await loadImg('assets/sticker.png');
       if (sk) { const w = 440, h = w * sk.height / sk.width; x.save(); rr(x, 540 - w / 2 - 8, 1124, w + 16, h + 16, 20); x.fillStyle = '#fff'; x.fill(); x.restore(); x.drawImage(sk, 540 - w / 2, 1132, w, h); }
-      x.fillStyle = 'rgba(255,255,255,.75)'; x.font = '500 26px "Hind Siliguri",sans-serif'; x.fillText(location.host || 'scamgym', 540, 1326);
+      x.fillStyle = 'rgba(255,255,255,.75)'; x.font = '500 26px "Hind Siliguri",sans-serif'; x.fillText(/^(localhost|127\.)/.test(location.host) || !location.host ? 'Scam Gym' : location.host, 540, 1326);
       try { return cv.toDataURL('image/png'); } catch (e) { return null; }
     }
     VIEWS.share = async function () {

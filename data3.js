@@ -195,4 +195,7 @@
       ]
     }
   );
+  SG.EN_SUB = SG.EN_SUB || {};
+  SG.EN_SUB['প্রতারক যেসব কৌশল ব্যবহার করেছে'] = 'Tactics the scammer used';
+  SG.EN_SUB['যেখানে নরম হয়েছিলেন'] = 'Where you went soft';
 })();
