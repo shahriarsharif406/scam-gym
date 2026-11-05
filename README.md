@@ -6,7 +6,7 @@
 
 A free, installable web app in Bangla and English that trains people to resist online fraud by letting them feel the pressure first, in a safe place.
 
-[**Live app**](https://scam-gym-blush.vercel.app) · [Demo video](#demo) · [How it works](#architecture) · [Run it](#run-it)
+[**Live app**](https://scam-gym-blush.vercel.app) · [Slide deck (PDF)](docs/Scam-Gym-Deck.pdf) · [Demo video](#demo) · [How it works](#architecture) · [Run it](#run-it)
 
 Built for the **Ostad Presents YUNet AIgnite Buildathon 2026** · individual entry · B2C web app
 
@@ -117,5 +117,11 @@ node --check app.js features.js features2.js features3.js features4.js data.js d
 ```
 
 Scanner behaviour was checked against scam and genuine samples (genuine OTP notices score near zero). Every route and simulation was walked in jsdom in both languages.
+
+## Author
+
+Built by Shahariar, founder of FutureTech.ai. More projects: [github.com/shahariar-ai](https://github.com/shahariar-ai) · [github.com/shahriarsharif406](https://github.com/shahriarsharif406)
+
+Slide deck: [docs/Scam-Gym-Deck.pdf](docs/Scam-Gym-Deck.pdf)
 
 © FutureTech.ai · MIT License
