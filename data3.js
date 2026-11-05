@@ -198,4 +198,5 @@
   SG.EN_SUB = SG.EN_SUB || {};
   SG.EN_SUB['প্রতারক যেসব কৌশল ব্যবহার করেছে'] = 'Tactics the scammer used';
   SG.EN_SUB['যেখানে নরম হয়েছিলেন'] = 'Where you went soft';
+  [['স্ক্যাম ঠেকানোর অনুশীলন-জিম', 'The practice gym for stopping scams'], ['শিখুন', 'Learn'], ['সুরক্ষা', 'Protect'], ['প্রকল্প', 'Project'], ['সোর্স কোড', 'Source code'], ['স্কোর কার্ড', 'Score card']].forEach((x) => { SG.EN_EXACT[x[0]] = x[1]; });
 })();

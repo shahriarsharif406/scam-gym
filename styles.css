@@ -934,3 +934,54 @@ html[data-theme=night] .cc .ci.ci-bot{background:rgba(255,255,255,.14)}
 html[data-theme=night] .mist{background:rgba(190,40,80,.2);border-color:rgba(251,113,133,.55);color:#ffe4ea}
 html[data-theme=night] .mist b{color:#fff}
 html[data-theme=night] .mist small{color:#ffc9d4}
+
+/* === সাইডবার ও ফুটার: উজ্জ্বল, আধুনিক (Aurora, সবার শেষে) === */
+.foot{position:relative;max-width:1080px;margin:34px auto 0;padding:0;border-radius:26px;overflow:hidden;text-align:left;color:#e9e5ff;font-size:.86rem;background:linear-gradient(135deg,#4b2fd8 0%,#2f3fd0 48%,#1479c8 100%);border:1px solid rgba(255,255,255,.34);box-shadow:0 30px 60px -30px rgba(40,30,170,.75),inset 0 1px 0 rgba(255,255,255,.35)}
+.foot::before{content:"";position:absolute;right:-90px;top:-110px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(255,236,170,.55),rgba(255,190,120,.18) 45%,transparent 70%);pointer-events:none}
+.foot-hills{position:absolute;left:0;right:0;bottom:78px;width:100%;height:60px;pointer-events:none}
+.foot-in{position:relative;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:26px;padding:30px 30px 18px}
+.foot-logo{font-family:var(--disp,Fraunces,serif);font-weight:800;font-size:2rem;letter-spacing:-.5px;color:#fff;line-height:1}
+.foot-logo b{background:linear-gradient(135deg,#fde68a,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.foot-brand p{margin:8px 0 14px;color:#e4e0ff;font-weight:500}
+.foot-stk{display:block;height:46px;width:auto;border-radius:10px;background:#fff;padding:3px;box-shadow:0 8px 22px -8px rgba(0,0,0,.5)}
+.foot-col{display:flex;flex-direction:column;gap:9px}
+.foot-col h4{margin:0 0 4px;font-size:.78rem;font-weight:700;letter-spacing:.04em;color:#fde68a}
+.foot-col a{color:#fff;text-decoration:none;font-weight:500;opacity:.92;width:max-content;max-width:100%;border-bottom:1px solid transparent;transition:border-color .15s,transform .15s}
+.foot-col a:hover{border-bottom-color:#67e8f9;transform:translateX(3px);opacity:1}
+.foot-note{position:relative;padding:16px 30px 20px;background:rgba(10,7,50,.5);border-top:1px solid rgba(255,255,255,.2);color:#e1dcff;font-size:.78rem;line-height:1.55;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.foot-note p+p{margin-top:4px;color:#f2efff}
+.foot .offpill{position:absolute;right:22px;bottom:14px;margin:0;z-index:2}
+.foot .offpill .op{background:rgba(52,211,153,.22);color:#d7fff0;border:1px solid #34d399}
+@media(max-width:760px){.foot-in{grid-template-columns:1fr 1fr;padding:24px 20px 14px}.foot-brand{grid-column:1/-1}.foot-note{padding:14px 20px 56px}.foot .offpill{left:20px;right:auto;bottom:12px}}
+@media(min-width:1100px){.foot{margin-left:260px;margin-right:24px;max-width:none}}
+html[data-theme=night] .foot{background:linear-gradient(135deg,#4b2fd8 0%,#2f3fd0 48%,#1479c8 100%);color:#e9e5ff;border-color:rgba(255,255,255,.34)}
+html[data-theme=night] .foot-note{background:rgba(10,7,50,.5);color:#e1dcff}
+
+@media(min-width:1100px){
+  .side{width:240px;padding:16px 12px 14px;background:radial-gradient(120% 60% at 0% 0%,rgba(139,92,246,.55),transparent 60%),radial-gradient(100% 50% at 100% 100%,rgba(34,211,238,.28),transparent 60%),linear-gradient(180deg,#2a1f9c 0%,#1d1a86 55%,#13276f 100%);border-right:1px solid rgba(255,255,255,.26);box-shadow:12px 0 40px -20px rgba(60,40,200,.65)}
+  .side nav{gap:4px}
+  .side nav a,.side nav button{position:relative;padding:8px 12px 8px 8px;color:#ece9ff;font-weight:600;font-size:.96rem;border:1px solid transparent}
+  .side nav i{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;font-size:1.05rem;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.3);transition:transform .18s,background .18s}
+  .side nav > :nth-child(1) i{background:linear-gradient(135deg,#fbbf24,#f59e0b)}
+  .side nav > :nth-child(2) i{background:linear-gradient(135deg,#a78bfa,#7c5cff)}
+  .side nav > :nth-child(3) i{background:linear-gradient(135deg,#22d3ee,#3b82f6)}
+  .side nav > :nth-child(4) i{background:linear-gradient(135deg,#34d399,#10b981)}
+  .side nav > :nth-child(5) i{background:linear-gradient(135deg,#60a5fa,#6366f1)}
+  .side nav > :nth-child(6) i{background:linear-gradient(135deg,#f472b6,#ec4899)}
+  .side nav > :nth-child(7) i{background:linear-gradient(135deg,#fcd34d,#f97316)}
+  .side nav > :nth-child(8) i{background:linear-gradient(135deg,#2dd4bf,#0ea5e9)}
+  .side nav > :nth-child(9) i{background:linear-gradient(135deg,#fb923c,#f43f5e)}
+  .side nav a.sosl i{background:linear-gradient(135deg,#fb7185,#e11d48);box-shadow:0 0 0 0 rgba(251,113,133,.6);animation:sgsos 2.4s ease-out infinite}
+  .side nav a.sosl{color:#ffd6de}
+  .side nav button i{background:rgba(255,255,255,.18)}
+  .side nav a:hover,.side nav button:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);color:#fff}
+  .side nav a:hover i,.side nav button:hover i{transform:scale(1.08) rotate(-4deg)}
+  .side nav a.on{color:#fff;background:linear-gradient(90deg,rgba(139,92,246,.85),rgba(59,130,246,.75) 60%,rgba(34,211,238,.55));border-color:rgba(255,255,255,.45);box-shadow:0 10px 24px -10px rgba(34,211,238,.7),inset 0 1px 0 rgba(255,255,255,.4)}
+  .side nav a.on i{background:#fff;box-shadow:0 4px 12px -2px rgba(0,0,0,.35)}
+  .side-iq{margin-top:12px;padding:14px;border-radius:18px;border:1px solid rgba(255,255,255,.38);background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.08));color:#fff;box-shadow:0 14px 30px -16px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.4)}
+  .side::after{content:"";position:sticky;display:block;bottom:-14px;left:0;right:0;height:0}
+}
+@keyframes sgsos{0%{box-shadow:0 0 0 0 rgba(251,113,133,.55)}70%,100%{box-shadow:0 0 0 12px rgba(251,113,133,0)}}
+@media(prefers-reduced-motion:reduce){.side nav a.sosl i{animation:none}}
+html[data-theme=night] .side{background:radial-gradient(120% 60% at 0% 0%,rgba(139,92,246,.55),transparent 60%),radial-gradient(100% 50% at 100% 100%,rgba(34,211,238,.28),transparent 60%),linear-gradient(180deg,#2a1f9c 0%,#1d1a86 55%,#13276f 100%);border-right:1px solid rgba(255,255,255,.26)}
+html[data-theme=night] .side .on{background:linear-gradient(90deg,rgba(139,92,246,.85),rgba(59,130,246,.75) 60%,rgba(34,211,238,.55));box-shadow:0 10px 24px -10px rgba(34,211,238,.7),inset 0 1px 0 rgba(255,255,255,.4)}

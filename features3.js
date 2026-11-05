@@ -7,7 +7,7 @@
   SG.exts.push(function (c) {
     const { VIEWS, $, esc, L, tx, toast, save, FAST } = c;
     const st = () => c.S;
-    const CACHE = 'scamgym-v17';
+    const CACHE = 'scamgym-v18';
     let deferred = null;
     window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferred = e; });
     window.addEventListener('appinstalled', () => { deferred = null; toast(L('অ্যাপ ইনস্টল হয়েছে', 'App installed')); });
