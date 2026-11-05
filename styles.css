@@ -930,3 +930,7 @@ html[data-theme=night] .cc .ci.ci-bot{background:rgba(255,255,255,.14)}
 @keyframes sgdrift{from{transform:translateX(-28px)}to{transform:translateX(34px)}}
 .pgscene:not(.pghero .pgscene)::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(8,6,40,0) 40%,rgba(8,6,40,.38)),radial-gradient(120% 90% at 50% 120%,rgba(10,6,50,.5),transparent 60%)}
 @media(prefers-reduced-motion:reduce){.pgscene .drift{animation:none}}
+/* ফলাফল পেজ: "যেখানে নরম হয়েছিলেন" বক্সের লেখা গাঢ় ব্যাকগ্রাউন্ডে পড়া যেত না */
+html[data-theme=night] .mist{background:rgba(190,40,80,.2);border-color:rgba(251,113,133,.55);color:#ffe4ea}
+html[data-theme=night] .mist b{color:#fff}
+html[data-theme=night] .mist small{color:#ffc9d4}
