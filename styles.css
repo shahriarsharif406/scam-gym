@@ -924,3 +924,9 @@ html[data-theme=night] .cc .ci.ci-bot{background:rgba(255,255,255,.14)}
 .au-item:has(input:checked){border-color:#34d399;background:linear-gradient(160deg,rgba(52,211,153,.2),rgba(14,30,60,.8))}
 .au-ic{background:rgba(139,92,246,.28)}
 .au-item input{accent-color:#8b5cf6}
+/* === দৃশ্য: ধীরে ভাসমান মেঘ ও কুয়াশার আভা === */
+.pgscene .drift{animation:sgdrift 60s ease-in-out infinite alternate}
+.pgscene .drift:nth-of-type(2n){animation-duration:80s;animation-direction:alternate-reverse}
+@keyframes sgdrift{from{transform:translateX(-28px)}to{transform:translateX(34px)}}
+.pgscene:not(.pghero .pgscene)::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(8,6,40,0) 40%,rgba(8,6,40,.38)),radial-gradient(120% 90% at 50% 120%,rgba(10,6,50,.5),transparent 60%)}
+@media(prefers-reduced-motion:reduce){.pgscene .drift{animation:none}}

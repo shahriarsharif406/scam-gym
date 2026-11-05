@@ -119,11 +119,69 @@
       <g transform="translate(360 150)"><path d="M-22 4Q0-22 22 4Z" fill="#e0b050"/><rect x="-3" y="4" width="6" height="22" fill="#6a3a1a"/></g>`;
     }
   };
+  const cloud = (x, y, s, op) => `<g class="drift" opacity="${op || 0.9}" fill="#fff"><ellipse cx="${x}" cy="${y}" rx="${70 * s}" ry="${12 * s}"/><ellipse cx="${x - 34 * s}" cy="${y - 7 * s}" rx="${34 * s}" ry="${12 * s}"/><ellipse cx="${x + 30 * s}" cy="${y - 8 * s}" rx="${40 * s}" ry="${13 * s}"/></g>`;
+  Object.assign(SCENES, {
+    sajek: () => {
+      seed = 21;
+      return `<defs>${grad('sj1', [[0, '#3d4f9c'], [0.45, '#e58fa8'], [1, '#ffd9a0']])}${glow('sjs', '#fff0b8')}${grad('sj2', [[0, '#1f5e5a'], [1, '#0c2f35']])}</defs>
+      <rect width="1200" height="200" fill="url(#sj1)"/><circle cx="820" cy="118" r="120" fill="url(#sjs)"/><circle cx="820" cy="118" r="24" fill="#fff6cf"/>
+      ${ridge(112, 14, 0.008, 0.021, 1, '#6e5fa0', 0.6)}
+      <rect y="124" width="1200" height="40" fill="#fff" opacity=".55"/>${cloud(200, 134, 1.6, 0.85)}${cloud(560, 142, 1.9, 0.9)}${cloud(980, 132, 1.5, 0.85)}${cloud(380, 150, 1.2, 0.7)}
+      ${ridge(150, 16, 0.011, 0.027, 3, '#2d7a6a', 0.95)}${ridge(172, 12, 0.014, 0.033, 5, '#1c5f52')}
+      <g transform="translate(160 150)"><rect x="-22" y="-14" width="44" height="22" fill="#8a5a2e"/><path d="M-28 -14L0-34L28-14Z" fill="#c4452d"/><rect x="-5" y="-4" width="10" height="12" fill="#3a2410"/></g>
+      <g transform="translate(250 160)"><rect x="-16" y="-10" width="32" height="16" fill="#7a4e28"/><path d="M-21 -10L0-26L21-10Z" fill="#d1583a"/></g>
+      <path d="M470 50q8-7 16 0q8-7 16 0M690 36q6-5 12 0q6-5 12 0" stroke="#3a2f60" fill="none" stroke-width="2" stroke-linecap="round" opacity=".7"/>`;
+    },
+    ratargul: () => {
+      seed = 33; let tr = '', rf = '';
+      for (let i = 0; i < 26; i++) {
+        const x = 20 + i * 46 + rnd() * 24, w = 4 + rnd() * 5, top = -10 + rnd() * 60;
+        tr += `<path d="M${x} 120Q${x + (rnd() - 0.5) * 8} 70 ${x + (rnd() - 0.5) * 12} ${top}" stroke="#14382d" stroke-width="${w}" fill="none"/><circle cx="${x}" cy="${top + 6}" r="${20 + rnd() * 18}" fill="#1a5b3c" opacity=".92"/>`;
+        rf += `<path d="M${x} 124L${x + (rnd() - 0.5) * 10} 190" stroke="#0e2a24" stroke-width="${w}" opacity=".35"/>`;
+      }
+      return `<defs>${grad('rt1', [[0, '#b8e6c0'], [0.6, '#5fb58a'], [1, '#1f6a4a']])}${grad('rt2', [[0, '#2b8f7c'], [1, '#0d3b3a']])}</defs>
+      <rect width="1200" height="200" fill="url(#rt1)"/>
+      <g opacity=".28" fill="#fffbd0"><path d="M300-10L380 124L330 124Z"/><path d="M640-10L740 124L680 124Z"/><path d="M930-10L1010 124L960 124Z"/></g>
+      ${tr}<rect y="122" width="1200" height="78" fill="url(#rt2)"/>${rf}
+      <g stroke="#cdf5d8" stroke-width="1.4" fill="none" opacity=".45"><path d="M0 150q60-5 120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0"/><path d="M-30 172q60-5 120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0t120 0"/></g>
+      <g transform="translate(560 156)"><ellipse cx="0" cy="8" rx="64" ry="5" fill="#04201c" opacity=".5"/><path d="M-56 -4Q-44 12 0 12Q46 12 58 -8Q30 2 0 2Q-30 2 -56 -4Z" fill="#7a4a22"/><path d="M-20 -4Q-20 -24 0 -26Q20 -24 20 -4Z" fill="#e8c36a"/></g>`;
+    },
+    jaflong: () => {
+      seed = 45; let st = '';
+      for (let i = 0; i < 38; i++) st += `<ellipse cx="${rnd() * 1200}" cy="${172 + rnd() * 24}" rx="${5 + rnd() * 9}" ry="${3 + rnd() * 4}" fill="${['#8a8f93', '#a9a79c', '#6d7378', '#c2bba6'][i % 4]}" opacity=".9"/>`;
+      return `<defs>${grad('jf1', [[0, '#7fa7c9'], [0.6, '#cfe3ef'], [1, '#eef5f2']])}${grad('jf2', [[0, '#35b6c4'], [1, '#157a8f']])}</defs>
+      <rect width="1200" height="200" fill="url(#jf1)"/>${cloud(260, 40, 1.5, 0.9)}${cloud(780, 30, 1.8, 0.85)}
+      ${ridge(78, 20, 0.007, 0.019, 2, '#5d7f93', 0.85)}${ridge(100, 16, 0.01, 0.025, 4, '#3f7a62', 0.95)}${ridge(122, 10, 0.013, 0.031, 1, '#2e6a4c')}
+      <rect y="120" width="1200" height="12" fill="#fff" opacity=".35"/>
+      <path d="M0 200L0 138Q300 126 620 140T1200 136V200Z" fill="url(#jf2)"/>
+      <g stroke="#e8fbff" stroke-width="1.5" fill="none" opacity=".6"><path d="M80 150q50-6 100 0t100 0"/><path d="M520 156q50-6 100 0t100 0"/><path d="M860 148q50-6 100 0t100 0"/></g>
+      ${st}
+      <g transform="translate(700 158)"><path d="M-46 0Q-36 14 0 14Q36 14 48 -4Q26 4 0 4Q-26 4 -46 0Z" fill="#6a3f1c"/><path d="M-18 0Q-18 -16 0 -18Q18 -16 18 0Z" fill="#d9b25a"/><path d="M26 -2L34 -34" stroke="#3a2410" stroke-width="2"/></g>`;
+    },
+    lalakhal: () => {
+      seed = 52; let b = '';
+      for (let i = 0; i < 9; i++) b += kashTuft(24 + i * 132 + rnd() * 40, 132, 26 + rnd() * 20, (rnd() - 0.5) * 12, '#2f7a3c');
+      return `<defs>${grad('ll1', [[0, '#4aa8e8'], [1, '#d7f1ff']])}${grad('ll2', [[0, '#1fd0c8'], [0.5, '#12a3b8'], [1, '#0b6a96']])}</defs>
+      <rect width="1200" height="200" fill="url(#ll1)"/>${cloud(180, 36, 1.4, 0.95)}${cloud(620, 28, 1.7, 0.9)}${cloud(1000, 48, 1.2, 0.9)}
+      ${ridge(104, 10, 0.009, 0.023, 3, '#4f9a62', 0.9)}<rect y="112" width="1200" height="20" fill="#2f7a3c"/>${b}
+      <rect y="130" width="1200" height="70" fill="url(#ll2)"/>
+      <g stroke="#e4fffb" stroke-width="1.6" fill="none" opacity=".55"><path d="M0 152q70-7 140 0t140 0t140 0t140 0t140 0t140 0t140 0t140 0t140 0"/><path d="M-60 176q70-7 140 0t140 0t140 0t140 0t140 0t140 0t140 0t140 0t140 0"/></g>
+      <g transform="translate(470 158)"><ellipse cx="0" cy="12" rx="80" ry="5" fill="#053a52" opacity=".4"/><path d="M-70 -4Q-56 14 0 14Q58 14 72 -8Q38 2 0 2Q-38 2 -70 -4Z" fill="#f2f6f8"/><path d="M-70 -4Q-56 6 0 6Q58 6 72 -8" stroke="#1b6fb0" stroke-width="3" fill="none"/><rect x="-30" y="-24" width="52" height="20" rx="3" fill="#fff"/><path d="M-34 -24H26L20-34H-28Z" fill="#e0412e"/></g>`;
+    },
+    bandarban: () => {
+      seed = 64;
+      return `<defs>${grad('bb1', [[0, '#4a2c7a'], [0.5, '#f0708a'], [1, '#ffc16a']])}${glow('bbs', '#ffe08a')}</defs>
+      <rect width="1200" height="200" fill="url(#bb1)"/><circle cx="330" cy="128" r="130" fill="url(#bbs)"/><circle cx="330" cy="128" r="28" fill="#fff0b0"/>
+      <g opacity=".4" stroke="#fff6d0" stroke-width="3"><path d="M330 128L60 0M330 128L200 0M330 128L420 0M330 128L600 0M330 128L760 20"/></g>
+      ${ridge(100, 22, 0.006, 0.017, 1, '#8a4f8f', 0.8)}${ridge(124, 18, 0.009, 0.023, 4, '#5a3a78', 0.9)}${cloud(900, 132, 1.8, 0.45)}${ridge(150, 14, 0.012, 0.03, 2, '#2f2a5e')}${cloud(300, 156, 1.6, 0.4)}${ridge(176, 10, 0.016, 0.035, 5, '#171a40')}
+      <path d="M600 60q8-7 16 0q8-7 16 0M640 76q6-5 12 0q6-5 12 0M700 50q7-6 14 0q7-6 14 0" stroke="#2a1a4a" fill="none" stroke-width="2" stroke-linecap="round"/>`;
+    }
+  });
   const NAMES = {
     mangrove: ['সুন্দরবন', 'Sundarbans'], tea: ['শ্রীমঙ্গলের চা-বাগান', 'Sreemangal tea gardens'], sea: ['কক্সবাজার সমুদ্রসৈকত', "Cox's Bazar beach"],
-    lake: ['কাপ্তাই হ্রদ, রাঙামাটি', 'Kaptai Lake, Rangamati'], shapla: ['শাপলার বিল', 'Shapla beel'], kash: ['শরতের কাশবন', 'Autumn kash fields'], monsoon: ['বর্ষার ধানক্ষেত', 'Monsoon paddy fields'], sundarban: ['সুন্দরবনের ভোর', 'Dawn in the Sundarbans'], stmartin: ['সেন্ট মার্টিন দ্বীপ', "St Martin's Island"]
+    lake: ['কাপ্তাই হ্রদ, রাঙামাটি', 'Kaptai Lake, Rangamati'], shapla: ['শাপলার বিল', 'Shapla beel'], kash: ['শরতের কাশবন', 'Autumn kash fields'], monsoon: ['বর্ষার ধানক্ষেত', 'Monsoon paddy fields'], sajek: ['সাজেকের মেঘের সাগর', 'Sajek cloud sea'], ratargul: ['রাতারগুল জলাবন, সিলেট', 'Ratargul swamp forest'], jaflong: ['জাফলং, সিলেট', 'Jaflong, Sylhet'], lalakhal: ['লালাখাল, সিলেট', 'Lalakhal, Sylhet'], bandarban: ['বান্দরবানের পাহাড়', 'Bandarban hills'], sundarban: ['সুন্দরবনের ভোর', 'Dawn in the Sundarbans'], stmartin: ['সেন্ট মার্টিন দ্বীপ', "St Martin's Island"]
   };
-  const MAP = { arena: 'sundarban', live: 'tea', scan: 'sea', voice: 'lake', lookalike: 'shapla', secret: 'kash', audit: 'stmartin', shield: 'kash', triage: 'monsoon', alerts: 'monsoon', spot: 'lake', library: 'tea', pause: 'shapla', cert: 'sea', me: 'kash', offline: 'lake', card: 'shapla', sos: 'monsoon', family: 'kash', tour: null, play: null, home: null };
+  const MAP = { arena: 'sundarban', live: 'tea', scan: 'sea', voice: 'lake', lookalike: 'shapla', secret: 'kash', audit: 'stmartin', shield: 'sajek', triage: 'monsoon', alerts: 'ratargul', spot: 'jaflong', library: 'lalakhal', pause: 'bandarban', cert: 'sea', me: 'kash', offline: 'lake', card: 'shapla', sos: 'monsoon', share: 'sajek', family: 'lalakhal', tour: null, play: null, home: null };
   const KEYS = Object.keys(SCENES);
   SG.sceneKey = (name) => (name in MAP ? MAP[name] : KEYS[(name.split('').reduce((a, c) => a + c.charCodeAt(0), 0)) % KEYS.length]);
   SG.sceneBg = (key) => `<svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice" focusable="false" aria-hidden="true">${SCENES[key]()}</svg>`;

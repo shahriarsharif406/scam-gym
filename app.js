@@ -132,7 +132,7 @@
 
   /* ---------- router ---------- */
   const VIEWS = {};
-  const GROUP = { play: 'arena', spot: 'more', library: 'more', shield: 'more', triage: 'more', audit: 'more', pause: 'more', cert: 'more', me: 'more', voice: 'arena', lookalike: 'scan', secret: 'more', alerts: 'more', offline: 'more', card: 'more' };
+  const GROUP = { play: 'arena', spot: 'more', library: 'more', shield: 'more', triage: 'more', audit: 'more', pause: 'more', cert: 'more', me: 'more', voice: 'arena', lookalike: 'scan', secret: 'more', alerts: 'more', offline: 'more', card: 'more', share: 'more', family: 'more', quick: 'arena' };
   function setNav(n) {
     const g = GROUP[n] || n;
     ['#dnav', '#bnav', '#side'].forEach((sel) => { const as = $$(sel + ' [data-r]'); const ex = as.some((x) => x.dataset.r === n); as.forEach((x) => x.classList.toggle('on', x.dataset.r === (ex ? n : g))); });
