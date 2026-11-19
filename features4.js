@@ -94,8 +94,8 @@
       const smp = (SG.SAMPLES_EN || SG.SAMPLES || [])[0];
       V().innerHTML = `<div class="stack" style="max-width:880px;margin:0 auto">
         <div class="row" style="justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><h1>🎤 ${L('পিচ মোড', 'Pitch mode')}</h1>
-        <div class="row" style="gap:10px;align-items:center"><b id="ptm" style="font-size:2.2rem;font-variant-numeric:tabular-nums;min-width:4.2ch">3:00</b><button class="btn pri" id="pgo">▶ ${L('শুরু', 'Start')}</button><button class="btn" id="prs">↺</button></div></div>
-        <p class="mut">${L('৩ মিনিটের ডেমো: ক্রমে ১ থেকে ৪ চাপুন। সময় ২:৩০-এ রং বদলাবে।', '3-minute demo: tap 1 to 4 in order. The timer turns amber at 2:30.')}</p>
+        <div class="row" style="gap:10px;align-items:center"><b id="ptm" style="font-size:2.2rem;font-variant-numeric:tabular-nums;min-width:4.2ch">5:00</b><button class="btn pri" id="pgo">▶ ${L('শুরু', 'Start')}</button><button class="btn" id="prs">↺</button></div></div>
+        <p class="mut">${L('৫ মিনিটের ডেমো: ক্রমে ১ থেকে ৪ চাপুন। শেষ ১ মিনিটে রং বদলাবে।', '5-minute demo: tap 1 to 4 in order. The timer turns amber in the last minute.')}</p>
         <div class="stack" style="gap:12px">
           <a class="card glow" style="display:block;color:inherit;text-decoration:none" href="#/live/${first}"><b>1 · ${L('লাইভ AI: প্রতারকের মুখোমুখি', 'Live AI: face the scammer')}</b><p class="sm mut">${L('একটা ভুল উত্তর দিন, কোচ ধরবে। তারপর নিরাপদ উত্তর দিন।', 'Give one wrong reply and let the coach catch it. Then reply safely.')}</p></a>
           <a class="card" style="display:block;color:inherit;text-decoration:none" href="#/quick"><b>2 · ${L('৬০ সেকেন্ডের সিমুলেশন', 'The 60-second simulation')}</b><p class="sm mut">${L('নিরাপদ, ঝুঁকিপূর্ণ বা মারাত্মক, প্রতিটি পছন্দের ব্যাখ্যা।', 'Safe, risky or fatal: every choice explained.')}</p></a>
@@ -103,10 +103,10 @@
           <a class="card" style="display:block;color:inherit;text-decoration:none" href="#/share"><b>4 · ${L('স্কোর কার্ড ও পরিবারকে চ্যালেঞ্জ', 'Score card and family challenge')}</b><p class="sm mut">${L('এক ট্যাপে ছবি, এক লিংকে পরিবার।', 'One tap for the image, one link for family.')}</p></a>
         </div>
         <div class="card"><div class="row" style="justify-content:space-between;gap:10px;flex-wrap:wrap"><span class="sm mut">${L('নতুন করে শুরু করলে প্রগতি মুছে যাবে, শুধু ডেমোর আগে করুন।', 'Fresh start clears progress. Do it only before the demo.')}</span><button class="btn" id="pfr">🧹 ${L('নতুন করে শুরু', 'Fresh start')}</button></div></div></div>`;
-      const tm = $('#ptm'); let left = 180, iv = 0;
+      const tm = $('#ptm'); let left = 300, iv = 0;
       const draw = () => { tm.textContent = Math.floor(left / 60) + ':' + String(left % 60).padStart(2, '0'); tm.style.color = left <= 30 ? '#fb7185' : left <= 60 ? '#fbbf24' : ''; };
-      $('#pgo').onclick = () => { clearInterval(iv); left = 180; draw(); iv = setInterval(() => { left = Math.max(0, left - 1); draw(); if (!left) clearInterval(iv); }, 1000); };
-      $('#prs').onclick = () => { clearInterval(iv); left = 180; draw(); };
+      $('#pgo').onclick = () => { clearInterval(iv); left = 300; draw(); iv = setInterval(() => { left = Math.max(0, left - 1); draw(); if (!left) clearInterval(iv); }, 1000); };
+      $('#prs').onclick = () => { clearInterval(iv); left = 300; draw(); };
       $('#pscan').onclick = () => { if (smp) { try { sessionStorage.setItem('sg.prefill', smp.t); } catch (e) { /* ignore */ } } };
       $('#pfr').onclick = () => { if (confirm(L('প্রগতি মুছে নতুন করে শুরু করবেন?', 'Clear progress and start fresh?'))) { c.restoreS({}); toast(L('নতুন করে শুরু হয়েছে', 'Fresh start done')); location.hash = '#/pitch'; VIEWS.pitch(); } };
       c.setCleanup && c.setCleanup(() => clearInterval(iv));
