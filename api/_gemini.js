@@ -15,8 +15,11 @@ async function discover(key) {
     const ok = (j.models || []).filter((m) => (m.supportedGenerationMethods || []).includes('generateContent'))
       .map((m) => String(m.name).replace(/^models\//, ''))
       .filter((n) => /^gemini-[\d.]+-flash(-lite)?$/.test(n));
-    const ver = (n) => parseFloat(n.split('-')[1]) * 10 + (n.endsWith('lite') ? 0 : 5);
-    discovered = ok.sort((a, b) => ver(b) - ver(a));
+    // Newest flash models are often overloaded (503), so try lite models first, then older flash before newer.
+    const v = (n) => parseFloat(n.split('-')[1]);
+    const lite = ok.filter((n) => n.endsWith('lite')).sort((a, b) => v(b) - v(a));
+    const full = ok.filter((n) => !n.endsWith('lite')).sort((a, b) => v(a) - v(b));
+    discovered = [...lite, ...full];
     console.error('Gemini discovered models', discovered.join(','));
   } catch (e) { discovered = null; }
   return discovered || [];
@@ -61,7 +64,7 @@ async function gemini({ system, contents, temperature = 0.8, maxOutputTokens = 7
       const m = queue[i]; tried.add(m);
       try { r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
         method: 'POST',
-        signal: AbortSignal.any([ctl.signal, AbortSignal.timeout(11000)]),
+        signal: AbortSignal.any([ctl.signal, AbortSignal.timeout(7000)]),
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: system }] },
@@ -72,7 +75,7 @@ async function gemini({ system, contents, temperature = 0.8, maxOutputTokens = 7
         })
       });
       } catch (e) { if (e.name !== 'TimeoutError' && !(e.name === 'AbortError' && !ctl.signal.aborted)) throw e; console.error('Gemini attempt timeout', m); r = null; continue; }
-      if (r.ok) break;
+      if (r.ok) { if (discovered && discovered[0] !== m) discovered = [m, ...discovered.filter((x) => x !== m)]; break; }
       let t = ''; try { t = (await r.text()).slice(0, 300); } catch (e) { /* ignore */ }
       console.error('Gemini upstream', m, r.status, t);
       if (r.status === 401 || r.status === 403) break; // key problem: other models will fail too
