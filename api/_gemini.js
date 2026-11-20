@@ -1,7 +1,7 @@
 'use strict';
 // Shared helpers: Gemini call, rate limit, body parsing. (Leading "_" => not a public route on Vercel.)
 
-const MODELS = [process.env.GEMINI_MODEL, 'gemini-2.5-flash'].filter(Boolean);
+const MODELS = [process.env.GEMINI_MODEL].filter(Boolean);
 const hits = new Map();
 let discovered = null;
 
@@ -58,6 +58,7 @@ async function gemini({ system, contents, temperature = 0.8, maxOutputTokens = 7
   try {
     let r = null;
     const tried = new Set();
+    if (!discovered && !MODELS.length) await discover(key);
     const queue = discovered && discovered.length ? [...discovered] : [...MODELS];
     let again = false;
     for (let i = 0; i < queue.length; i++) {
