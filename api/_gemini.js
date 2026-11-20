@@ -59,16 +59,19 @@ async function gemini({ system, contents, temperature = 0.8, maxOutputTokens = 7
     let again = false;
     for (let i = 0; i < queue.length; i++) {
       const m = queue[i]; tried.add(m);
-      r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
+      try { r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
         method: 'POST',
-        signal: ctl.signal,
+        signal: AbortSignal.any([ctl.signal, AbortSignal.timeout(11000)]),
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: system }] },
           contents,
-          generationConfig: { temperature, maxOutputTokens, responseMimeType: 'application/json', thinkingConfig: { thinkingBudget: 0 } }
+          generationConfig: m.startsWith('gemini-2')
+            ? { temperature, maxOutputTokens, responseMimeType: 'application/json', thinkingConfig: { thinkingBudget: 0 } }
+            : { temperature, maxOutputTokens: maxOutputTokens + 1500, responseMimeType: 'application/json' }
         })
       });
+      } catch (e) { if (e.name !== 'TimeoutError' && !(e.name === 'AbortError' && !ctl.signal.aborted)) throw e; console.error('Gemini attempt timeout', m); r = null; continue; }
       if (r.ok) break;
       let t = ''; try { t = (await r.text()).slice(0, 300); } catch (e) { /* ignore */ }
       console.error('Gemini upstream', m, r.status, t);
