@@ -1,7 +1,7 @@
 'use strict';
 // Shared helpers: Gemini call, rate limit, body parsing. (Leading "_" => not a public route on Vercel.)
 
-const MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+const MODELS = [process.env.GEMINI_MODEL, 'gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.0-flash', 'gemini-2.5-flash-lite'].filter(Boolean);
 const hits = new Map();
 
 function limited(req, max = 30, windowMs = 60000) {
@@ -35,17 +35,24 @@ async function gemini({ system, contents, temperature = 0.8, maxOutputTokens = 7
   const ctl = new AbortController();
   const to = setTimeout(() => ctl.abort(), 20000);
   try {
-    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
-      method: 'POST',
-      signal: ctl.signal,
-      headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: system }] },
-        contents,
-        generationConfig: { temperature, maxOutputTokens, responseMimeType: 'application/json', thinkingConfig: { thinkingBudget: 0 } }
-      })
-    });
-    if (!r.ok) { const e = new Error('AI upstream error'); e.status = 502; throw e; }
+    let r = null;
+    for (const m of MODELS) {
+      r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`, {
+        method: 'POST',
+        signal: ctl.signal,
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: system }] },
+          contents,
+          generationConfig: { temperature, maxOutputTokens, responseMimeType: 'application/json', thinkingConfig: { thinkingBudget: 0 } }
+        })
+      });
+      if (r.ok) break;
+      let t = ''; try { t = (await r.text()).slice(0, 300); } catch (e) { /* ignore */ }
+      console.error('Gemini upstream', m, r.status, t);
+      if (r.status === 401 || r.status === 403) break; // key problem: other models will fail too
+    }
+    if (!r || !r.ok) { const e = new Error('AI upstream error'); e.status = 502; throw e; }
     const j = await r.json();
     const t = j?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('') || '';
     const out = parseJSON(t);
