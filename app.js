@@ -738,7 +738,7 @@
       x.fillStyle = '#BFE3D2'; x.font = '800 64px "Fraunces","Noto Serif Bengali",serif'; x.fillText('🛡️ ScamGym', 70, 120);
       x.fillStyle = '#fff'; x.font = '700 58px "Noto Serif Bengali",serif'; x.fillText('পরিবারের ৫ সোনালি নিয়ম', 70, 230);
       x.font = '500 44px "Hind Siliguri",sans-serif'; SG.GOLDEN_RULES.forEach((r, i) => { x.fillStyle = '#BFE3D2'; x.fillText(bn(i + 1) + '.', 70, 340 + i * 150); x.fillStyle = '#fff'; x.fillText(r[1], 150, 340 + i * 150); x.fillStyle = '#9FBDB4'; x.font = '400 32px "Hind Siliguri",sans-serif'; x.fillText(r[2], 150, 385 + i * 150); x.font = '500 44px "Hind Siliguri",sans-serif'; });
-      x.fillStyle = '#BFE3D2'; x.font = '600 38px "Hind Siliguri",sans-serif'; x.fillText('আমাদের ফ্যামিলি কোডওয়ার্ড আছে 🔑', 70, 1190); x.fillStyle = '#9FBDB4'; x.font = '400 30px sans-serif'; x.fillText('Scam Gym · FutureTech.ai', 70, 1270);
+      x.fillStyle = '#BFE3D2'; x.font = '600 38px "Hind Siliguri",sans-serif'; x.fillText('আমাদের ফ্যামিলি কোডওয়ার্ড আছে 🔑', 70, 1190); x.fillStyle = '#9FBDB4'; x.font = '400 30px sans-serif'; x.fillText('Scam Gym · anvialabs.com', 70, 1270);
       let url = ''; try { url = c.toDataURL('image/png'); } catch (e) { return toast('কার্ড বানানো যায়নি', true); }
       $('#cardout').innerHTML = `<img class="share-c" src="${url}" alt="শেয়ার কার্ড" style="width:100%;max-width:380px"><div style="margin-top:8px"><a class="btn sm" download="scamgym-family-rules.png" href="${url}">⬇️ ডাউনলোড</a></div>`;
     };

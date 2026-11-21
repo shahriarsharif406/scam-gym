@@ -122,8 +122,8 @@ Scanner behaviour was checked against scam and genuine samples (genuine OTP noti
 
 ## Author
 
-Built by Shahariar, founder of FutureTech.ai. More projects: [github.com/shahariar-ai](https://github.com/shahariar-ai) · [github.com/shahriarsharif406](https://github.com/shahriarsharif406)
+Built by Md. Shahariar Bin Sharif, AI developer ([anvialabs.com](https://anvialabs.com)). More projects: [github.com/shahariar-ai](https://github.com/shahariar-ai) · [github.com/shahriarsharif406](https://github.com/shahriarsharif406)
 
 Slide deck: [docs/Scam-Gym-Deck.pdf](docs/Scam-Gym-Deck.pdf)
 
-© FutureTech.ai · MIT License
+© Anvia Labs · MIT License
