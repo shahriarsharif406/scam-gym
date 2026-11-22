@@ -2,6 +2,6 @@
   "name": "scam-gym",
   "version": "1.0.0",
   "private": true,
-  "description": "Scam Gym — Bangla anti-scam training gym (Ostad YUNet AIgnite Buildathon 2026)",
+  "description": "Scam Gym — Bangla anti-scam training gym",
   "engines": { "node": ">=18" }
 }

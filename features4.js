@@ -18,7 +18,7 @@
     function loadImg(src) { return new Promise((res) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; }); }
     function rr(x, a, b, w, h, r) { x.beginPath(); x.moveTo(a + r, b); x.arcTo(a + w, b, a + w, b + h, r); x.arcTo(a + w, b + h, a, b + h, r); x.arcTo(a, b + h, a, b, r); x.arcTo(a, b, a + w, b, r); x.closePath(); }
     async function drawCard() {
-      const cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1350;
+      const cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1230;
       const x = cv.getContext && cv.getContext('2d'); if (!x) return null;
       const ft0 = x.fillText.bind(x); x.fillText = (t, a, b, m) => ft0(tx(String(t)), a, b, m);
       try { await Promise.all([document.fonts.load('800 80px "Fraunces"'), document.fonts.load('700 40px "Hind Siliguri"'), document.fonts.load('800 80px "Noto Serif Bengali"')]); } catch (e) { /* ignore */ }
@@ -39,9 +39,7 @@
       const stat = [[bn(wonN()) + '/' + bn(SG.SCENARIOS.length), L('সিমুলেশন জয়', 'Simulations won')], [bn(totalStars()) + ' ★', L('তারা', 'Stars')], ['🔥 ' + bn(st().streak), L('দিনের স্ট্রিক', 'Day streak')]];
       stat.forEach((s, i) => { const cx = 210 + i * 330; x.fillStyle = '#fff'; x.font = '800 48px "Fraunces","Noto Serif Bengali",serif'; x.fillText(s[0], cx, 985); x.fillStyle = 'rgba(255,255,255,.7)'; x.font = '500 24px "Hind Siliguri",sans-serif'; x.fillText(s[1], cx, 1020); });
       x.fillStyle = '#fff'; x.font = '700 40px "Hind Siliguri",sans-serif'; x.fillText(L('আমার স্কোর ছাড়াতে পারবে?', 'Can you beat my score?'), 540, 1100);
-      const sk = await loadImg('assets/sticker.png');
-      if (sk) { const w = 440, h = w * sk.height / sk.width; x.save(); rr(x, 540 - w / 2 - 8, 1124, w + 16, h + 16, 20); x.fillStyle = '#fff'; x.fill(); x.restore(); x.drawImage(sk, 540 - w / 2, 1132, w, h); }
-      x.fillStyle = 'rgba(255,255,255,.75)'; x.font = '500 26px "Hind Siliguri",sans-serif'; x.fillText(/^(localhost|127\.)/.test(location.host) || !location.host ? 'Scam Gym' : location.host, 540, 1326);
+      x.fillStyle = 'rgba(255,255,255,.75)'; x.font = '500 26px "Hind Siliguri",sans-serif'; x.fillText(/^(localhost|127\.)/.test(location.host) || !location.host ? 'Scam Gym' : location.host, 540, 1170);
       try { return cv.toDataURL('image/png'); } catch (e) { return null; }
     }
     VIEWS.share = async function () {

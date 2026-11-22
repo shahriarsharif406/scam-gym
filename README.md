@@ -6,11 +6,9 @@
 
 A free, installable web app in Bangla and English that trains people to resist online fraud by letting them feel the pressure first, in a safe place.
 
-[**Live app**](https://scam-gym-blush.vercel.app) · [Slide deck (PDF)](docs/Scam-Gym-Deck.pdf) · [Demo video](https://youtu.be/yMobvVwv208) · [How it works](#architecture) · [Run it](#run-it)
+[**Live app**](https://scam-gym-blush.vercel.app) · [Demo video](https://youtu.be/yMobvVwv208) · [How it works](#architecture) · [Run it](#run-it)
 
-Built for the **Ostad Presents YUNet AIgnite Buildathon 2026** · individual entry · B2C web app
-
-<img src="assets/sticker.png" width="420" alt="Built For Ostad Presents YUNet AIgnite Buildathon 2026">
+Built by [Md. Shahariar Bin Sharif](https://anvialabs.com) · B2C web app
 
 </div>
 
@@ -124,6 +122,5 @@ Scanner behaviour was checked against scam and genuine samples (genuine OTP noti
 
 Built by Md. Shahariar Bin Sharif, AI developer ([anvialabs.com](https://anvialabs.com)). More projects: [github.com/shahariar-ai](https://github.com/shahariar-ai) · [github.com/shahriarsharif406](https://github.com/shahriarsharif406)
 
-Slide deck: [docs/Scam-Gym-Deck.pdf](docs/Scam-Gym-Deck.pdf)
 
 © Anvia Labs · MIT License
